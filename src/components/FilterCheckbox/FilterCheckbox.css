@@ -1,0 +1,75 @@
+.filter-checkbox {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.filter-checkbox__invisible-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+}
+
+.filter-checkbox__visible-checkbox {
+    display: block;
+    width: 36px;
+    height: 20px;
+    margin-right: 14px;
+    background-image: url(../../images/checkbox-disable.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.filter-checkbox__visible-checkbox_active {
+    background-image: url(../../images/checkbox-active.svg);
+}
+
+.filter-checkbox__label {
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 768px) {
+    .filter-checkbox {
+        justify-content: flex-end;
+    }
+
+    .filter-checkbox__label {
+        flex-flow: row-reverse;
+    }
+
+    .filter-checkbox__visible-checkbox {
+        margin-left: 14px;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .filter-checkbox {
+        justify-content: center;
+    }
+
+    .filter-checkbox__label {
+        font-size: 11px;
+    }
+}

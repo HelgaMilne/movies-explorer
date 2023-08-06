@@ -1,0 +1,42 @@
+.section-headering__container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 0 70px;
+    padding: 0;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    border-bottom: 1px solid #000;
+}
+
+.section-headering__title {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    color: #000;
+    margin: 0 0 23px;
+    padding: 0;
+    text-align: left;
+}
+
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 320px) {
+    .section-headering__container {
+        margin-bottom: 60px;
+    }
+
+    .section-headering__title {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 28px;
+    }
+}

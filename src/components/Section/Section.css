@@ -1,0 +1,119 @@
+.section {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 70px;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.section_for_promo {
+    position: relative;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    align-items: flex-start;
+    background-color: #F3C1F8;
+}
+
+.section_for_about-project {
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+
+.section_for_about-me {
+    padding-top: 110px;
+    padding-bottom: 125px;
+}
+
+.section_for_techs {
+    padding-top: 110px;
+    padding-bottom: 110px;
+    background-color: #F5F5F5;
+}
+
+.section_for_movies {
+    padding: 80px 30px 70px;
+}
+
+.section_for_saved-movies {
+    padding-bottom: 214px;
+}
+
+.section_for_not-found-page {
+ justify-content: flex-end;
+}
+
+.section_for_profile{
+    height: calc(100vh - 74px);
+}
+
+.section_for_login,
+.section_for_register,
+.section_for_not-found-page {
+ height: 100vh;
+}
+
+@media screen and (max-width: 1110px) {
+    .section_for_promo {
+        padding-top: 218px;
+        padding-bottom: 75px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 90px 50px;
+    }
+
+    .section_for_promo {
+        padding-top: 218px;
+        padding-bottom: 75px;
+        align-items: center;
+    }
+
+    .section_for_movies {
+        padding: 80px 30px 70px;
+    }
+
+     .section_for_not-found-page {
+            padding-top: 222px;
+            padding-bottom: 222px;
+     
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .section {
+        padding: 70px 18px;
+    }
+
+    .section_for_promo {
+        padding: 67px 0 30px;
+    }
+
+    .section_for_movies {
+        padding: 90px 10px 70px;
+    }
+
+    .section_for_saved-movies {
+        padding: 90px 10px 154px;
+    }
+
+    .section_for_profile {
+        padding: 70px 30px 40px;
+    }
+
+    .section_for_login,
+    .section_for_register {
+        padding: 56px 30px 30px;
+    }
+
+    
+    .section_for_not-found-page {
+       padding: 30px;
+}
+}

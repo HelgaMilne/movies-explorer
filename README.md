@@ -29,7 +29,7 @@
 https://github.com/OlgaMilne/movies-explorer-frontend.git
 
 #### Ссылка на макет
-https://disk.yandex.ru/d/CZHNR0VuY8GEQQ
+https://disk.yandex.ru/d/aZdOkzaVbhGFYw
 
 #### Ссылка на проект
 
