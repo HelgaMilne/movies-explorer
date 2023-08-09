@@ -11,7 +11,7 @@ function SearchForm() {
     return (
         <form className="search-form" name="search-form" onSubmit={onSubmit} noValidate>
             <span className="search-form__container">
-                <input className="search-form__input" name="film" placeholder='Фильм' type="text"></input>
+                <textarea className="search-form__textarea" name="film" placeholder='Фильм' rows="1"></textarea>
                 <button className="search-form__button" type="submit" ></button>
             </span>
             <FilterCheckbox />

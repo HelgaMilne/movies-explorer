@@ -50,7 +50,13 @@
     transition: opacity .8s;
 }
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 640px) {
+    .not-found-page__title {
+        font-size: 120px;
+        line-height: 144px;
+        margin-bottom: 10px;
+    }
+}
 
 @media screen and (max-width: 320px) {
     .not-found-page__title {

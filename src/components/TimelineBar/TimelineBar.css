@@ -59,10 +59,32 @@
     text-align: center;
 }
 
+@media screen and (max-width: 640px) {
+    .timeline-bar {
+        grid-template-columns: 1fr 3fr;   
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .timeline-bar {
+        grid-template-columns: 1fr 2fr;   
+    }
+
+    .timeline-bar__title {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .timeline-bar__subtitle {
+        font-size: 12px;
+        line-height: 14px;
+        padding-top: 10px;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .timeline-bar {
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: 36px auto;
+        grid-template-columns: 1fr 2fr;     
     }
 
     .timeline-bar__title {

@@ -17,14 +17,14 @@ function Login() {
 
                 <label className="form__label">
                     E-mail
-                    <input className="form__input " name='email' type='email' value="pochta@yandex.ru" />
+                    <input className="form__input " name='email' type='email' />
                     <span className="form__input-error">{errorText} </span>
                 </label>
 
                 <label className="form__label">
                     Пароль
-                    <input className="form__input form__input_error" name='password' type='password' value="fdgrt557" />
-                    <span className="form__input-error form__input-error_active">{errorText} </span>
+                    <input className="form__input" name='password' type='password' />
+                    <span className="form__input-error">{errorText} </span>
                 </label>
 
             </Form>

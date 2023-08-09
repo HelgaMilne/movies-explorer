@@ -34,32 +34,27 @@
     background-color: #F5F5F5;
 }
 
-.section_for_movies {
-    padding: 80px 30px 70px;
-}
-
 .section_for_saved-movies {
     padding-bottom: 214px;
 }
 
 .section_for_not-found-page {
- justify-content: flex-end;
+    justify-content: flex-end;
 }
 
-.section_for_profile{
+.section_for_profile {
     height: calc(100vh - 74px);
 }
 
 .section_for_login,
 .section_for_register,
 .section_for_not-found-page {
- height: 100vh;
+    height: 100vh;
 }
 
 @media screen and (max-width: 1110px) {
     .section_for_promo {
-        padding-top: 218px;
-        padding-bottom: 75px;
+        padding: 218px 44px 75px;
         align-items: center;
     }
 }
@@ -70,20 +65,42 @@
     }
 
     .section_for_promo {
-        padding-top: 218px;
-        padding-bottom: 75px;
+        padding: 218px 44px 75px;
         align-items: center;
     }
 
     .section_for_movies {
         padding: 80px 30px 70px;
     }
-
-     .section_for_not-found-page {
-            padding-top: 222px;
-            padding-bottom: 222px;
-     
+/*
+    .section_for_not-found-page {
+        padding-top: 222px;
+        padding-bottom: 222px;
     }
+    */
+}
+
+    @media screen and (max-width: 640px) {
+        .section {
+            padding: 70px 30px;
+        }
+  
+    .section_for_promo {
+        padding: 80px 0 50px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section {
+        padding: 70px 30px;
+    }
+
+    .section_for_promo {
+        padding: 80px 0 50px;
+        align-items: center;
+    }
+
 }
 
 @media screen and (max-width: 320px) {
@@ -112,8 +129,8 @@
         padding: 56px 30px 30px;
     }
 
-    
+
     .section_for_not-found-page {
-       padding: 30px;
-}
+        padding: 30px;
+    }
 }

@@ -8,7 +8,7 @@ function Form({ formTitle, formName, buttonText, formText, formLinkText, formLin
         <div className="form__container">
             <Logo alignSelf={true} />
             <h3 className="form__title">{formTitle} </h3>
-            <form className="form form_name_login" name={formName} noValidate>
+            <form className="form form_name_login" name={formName} >
             <div className="form__children-container">
                 {children}
                 </div>
