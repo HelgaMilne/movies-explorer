@@ -16,12 +16,9 @@ function MoviesCardList({ cards, width }) {
 
     const [delta, setDelta] = useState(getDelta());
     const [cardIndex, setCardIndex] = useState(getIndex());
-    const [cardsForRender, setCardsForRender] = useState([]);
-
-// первая порция карточек для отображения
+    // первая порция карточек для отображения
     const firstCards = cards.slice(0, cardIndex);
-
-    setCardsForRender(firstCards);
+    const [cardsForRender, setCardsForRender] = useState(firstCards);
 
     // если ширина экрана поменяется, обновить количество карточек в ряду и индекс
     useEffect(() => {
@@ -31,11 +28,12 @@ function MoviesCardList({ cards, width }) {
 
      // высчитываем новую порцию карточек для отображения
     function handleClick() {
-        const nextCards = cards.slice(cardIndex, cardIndex + delta);
-        setCardIndex(cardIndex + delta);
+   
+        const nextCards = cards.slice(cardIndex, (cardIndex + delta));
         setCardsForRender([...cardsForRender, nextCards]);
+        setCardIndex(cardIndex + delta);          
     }
-  
+
     return (
         <div className="movies-card-list">
             <ul className="movies-card-list__container">

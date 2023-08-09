@@ -9,9 +9,10 @@ function SearchForm() {
     }
 
     return (
-        <form className="search-form" name="search-form" onSubmit={onSubmit} noValidate>
+        <form className="search-form" name="search-form" onSubmit={onSubmit}>
             <span className="search-form__container">
-                <textarea className="search-form__textarea" name="film" placeholder='Фильм' rows="1"></textarea>
+                <textarea className="search-form__textarea" name="film" placeholder='Фильм' rows="1" minLength="2"
+                        maxLength="200" required></textarea>
                 <button className="search-form__button" type="submit" ></button>
             </span>
             <FilterCheckbox />

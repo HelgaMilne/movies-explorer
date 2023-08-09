@@ -60,7 +60,8 @@
     text-align: left;
 }
 
-.form__input {
+.form__input,
+.form__input:valid {
     display: flex;
     width: 100%;
     height: 46px;
@@ -88,6 +89,7 @@
     background-color: #F3C1F8;
 }
 
+.form__input:invalid,
 .form__input_error {
     color: #FF3055;
 }
