@@ -15,7 +15,7 @@
     padding-top: 75px;
     padding-bottom: 75px;
     align-items: flex-start;
-    background-color: #F3C1F8;
+    background-color: var(--color-promo);
 }
 
 .section_for_about-project {
@@ -31,7 +31,7 @@
 .section_for_techs {
     padding-top: 110px;
     padding-bottom: 110px;
-    background-color: #F5F5F5;
+    background-color: var(--color-grey-05);
 }
 
 .section_for_saved-movies {
@@ -53,9 +53,19 @@
 }
 
 @media screen and (max-width: 1110px) {
+    .section {
+        padding: 70px 30px;
+    }
+
     .section_for_promo {
         padding: 218px 44px 75px;
         align-items: center;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .section {
+        padding: 70px 30px;
     }
 }
 
@@ -64,56 +74,36 @@
         padding: 90px 50px;
     }
 
-    .section_for_promo {
-        padding: 218px 44px 75px;
-        align-items: center;
-    }
-
     .section_for_movies {
         padding: 80px 30px 70px;
     }
-/*
-    .section_for_not-found-page {
-        padding-top: 222px;
-        padding-bottom: 222px;
-    }
-    */
 }
 
-    @media screen and (max-width: 640px) {
-        .section {
-            padding: 70px 30px;
-        }
-  
-    .section_for_promo {
-        padding: 80px 0 50px;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 640px) {
     .section {
         padding: 70px 30px;
     }
 
     .section_for_promo {
         padding: 80px 0 50px;
-        align-items: center;
     }
-
 }
 
 @media screen and (max-width: 320px) {
     .section {
-        padding: 70px 18px;
+        padding-left: 18px;
+        padding-right: 18px;
     }
 
     .section_for_promo {
-        padding: 67px 0 30px;
+        padding-top: 67px;
+        padding-bottom: 30px;
     }
 
     .section_for_movies {
-        padding: 90px 10px 70px;
+        padding-top: 90px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .section_for_saved-movies {
@@ -128,7 +118,6 @@
     .section_for_register {
         padding: 56px 30px 30px;
     }
-
 
     .section_for_not-found-page {
         padding: 30px;

@@ -1,4 +1,3 @@
-import React from 'react';
 import './SectionHeadering.css';
 
 function SectionHeadering({ headering }) {

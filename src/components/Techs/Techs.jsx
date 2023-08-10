@@ -1,4 +1,3 @@
-import React from 'react';
 import Section from '../Section/Section';
 import SectionHeadering from '../SectionHeadering/SectionHeadering';
 import './Techs.css';
@@ -6,7 +5,7 @@ import './Techs.css';
 function Techs() {
 
   const headering = 'Технологии';
-  
+
   return (
     <Section sectionName="techs">
       <SectionHeadering headering={headering} />

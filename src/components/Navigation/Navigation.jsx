@@ -9,7 +9,7 @@ function Navigation({ items }) {
             {
                 items.map(item => {
                     return (
-                        <li key={item.name}><NavLink className={({ isActive }) => isActive ? "navigation__item navigation__item_active" : "navigation__item"}  to={item.url} >{item.name}</NavLink></li>
+                        <li key={item.name}><NavLink className={({ isActive }) => isActive ? "navigation__item navigation__item_active" : "navigation__item"} to={item.url} >{item.name}</NavLink></li>
                     );
                 })
             }

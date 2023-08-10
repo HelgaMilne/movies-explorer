@@ -9,8 +9,8 @@ function Form({ formTitle, formName, buttonText, formText, formLinkText, formLin
             <Logo alignSelf={true} />
             <h3 className="form__title">{formTitle} </h3>
             <form className="form form_name_login" name={formName} >
-            <div className="form__children-container">
-                {children}
+                <div className="form__children-container">
+                    {children}
                 </div>
                 <button className="form__submit-button" type="submit" >{buttonText}</button>
             </form>

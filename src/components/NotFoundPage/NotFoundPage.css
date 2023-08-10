@@ -38,7 +38,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #000;
+    color: var(--color-black);
     margin: 0;
     padding: 184px 0 0;
     text-align: center;
@@ -62,7 +62,6 @@
     .not-found-page__title {
         font-size: 80px;
         line-height: 97px;
-        margin-bottom: 10px;
     }
 
     .not-found-page__subtitle {

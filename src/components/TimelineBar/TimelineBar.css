@@ -21,11 +21,11 @@
 }
 
 .timeline-bar__item_color_light {
-    background-color: #F2F2F2;
+    background-color: var(--color-grey-04);
 }
 
 .timeline-bar__item_color_dark {
-    background-color: black;
+    background-color: var(--color-black);
 }
 
 .timeline-bar__title {
@@ -40,11 +40,11 @@
 }
 
 .timeline-bar__title_color_light {
-    color: #fff;
+    color: var(--color-white);
 }
 
 .timeline-bar__title_color_dark {
-    color: #000;
+    color: var(--color-black);
 }
 
 .timeline-bar__subtitle {
@@ -53,7 +53,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #A0A0A0;
+    color: var(--color-grey-03);
     margin: 0;
     padding: 14px 0 0;
     text-align: center;
@@ -61,13 +61,13 @@
 
 @media screen and (max-width: 640px) {
     .timeline-bar {
-        grid-template-columns: 1fr 3fr;   
+        grid-template-columns: 1fr 3fr;
     }
 }
 
 @media screen and (max-width: 480px) {
     .timeline-bar {
-        grid-template-columns: 1fr 2fr;   
+        grid-template-columns: 1fr 2fr;
     }
 
     .timeline-bar__title {
@@ -83,10 +83,6 @@
 }
 
 @media screen and (max-width: 320px) {
-    .timeline-bar {
-        grid-template-columns: 1fr 2fr;     
-    }
-
     .timeline-bar__title {
         font-size: 11px;
         line-height: 13px;
@@ -95,7 +91,5 @@
     .timeline-bar__subtitle {
         font-size: 11px;
         line-height: 13px;
-        padding-top: 10px;
     }
-
 }

@@ -5,13 +5,12 @@ import Navigation from '../Navigation/Navigation';
 import './Header.css';
 
 function Header({ menuItems, path, width, onHamburgerMenuClick }) {
-   
+
     function handleClick() {
         onHamburgerMenuClick();
     }
 
     return (
-
         <Routes>
 
             <Route path='/' element={

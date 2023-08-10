@@ -29,7 +29,7 @@
     font-size: 20px;
     line-height: 24px;
     letter-spacing: -0.04em;
-    color: #000;
+    color: var(--color-black);
     margin: 0;
     padding: 0;
     text-align: left;
@@ -42,7 +42,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    color: #000;
+    color: var(--color-black);
     margin: 0;
     padding: 0;
     text-align: left;
@@ -58,10 +58,7 @@
         font-size: 12px;
         line-height: 18px;
     }
-
 }
-
-@media screen and (max-width: 768px) {}
 
 @media screen and (max-width: 320px) {
     .two-columns {

@@ -5,8 +5,8 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
     list-style: none;
+    gap: 20px;
 }
 
 .navigation__item {
@@ -15,7 +15,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
-    color: #000;
+    color: var(--color-black);
     margin: 0;
     padding: 0;
     text-align: center;

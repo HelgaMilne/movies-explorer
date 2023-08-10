@@ -1,4 +1,3 @@
-import React from 'react';
 import Section from '../Section/Section';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';

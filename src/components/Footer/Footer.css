@@ -29,8 +29,8 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
-    color: #A0A0A0;
-    border-bottom: 1px solid #E8E8E8;
+    color: var(--color-grey-03);
+    border-bottom: 1px solid var(--color-grey-01);
     box-sizing: border-box;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .footer__nav-link {
-    color: #000;
+    color: var(--color-black);
     text-decoration: none;
 }
 
@@ -73,7 +73,11 @@
     transition: opacity .8s;
 }
 
-@media screen and (max-width: 1024px) {}
+@media screen and (max-width: 1024px) {
+    .footer {
+        padding: 0 30px;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .footer {
@@ -106,6 +110,6 @@
     }
 
     .footer__copyright {
-        color: #A0A0A0;
+        color: var(--color-grey-03);
     }
 }

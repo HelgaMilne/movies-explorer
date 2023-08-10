@@ -15,7 +15,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
-    color: black;
+    color: var(--color-black);
     text-decoration-line: none;
     cursor: pointer;
 }
@@ -31,7 +31,7 @@
     height: 30px;
     margin: 0;
     padding: 0;
-    background-color: #F9F9F9;
+    background-color: var(--color-grey-02);
     background-image: url(../../images/icon-account.svg);
     background-size: 12px 14px;
     background-position: center;

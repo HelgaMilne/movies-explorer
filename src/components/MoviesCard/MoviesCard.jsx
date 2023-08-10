@@ -1,4 +1,3 @@
-import React from 'react';
 import './MoviesCard.css';
 
 function MoviesCard({ card }) {
@@ -13,14 +12,10 @@ function MoviesCard({ card }) {
                 <h4 className="movies-card__caption">{card.name}</h4>
                 <span className="movies-card__duration">{card.duration}&nbsp;минут</span>
             </div>
-            <img className="movies-card__image" src={card.image} alt={ `Кадр из фильма '${card.name}'`} />
+            <img className="movies-card__image" src={card.image} alt={`Кадр из фильма '${card.name}'`} />
             {button}
         </li>
     );
 }
 
 export default MoviesCard;
-/*
-
-    
-*/

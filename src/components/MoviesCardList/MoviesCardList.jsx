@@ -6,10 +6,10 @@ function MoviesCardList({ cards, width }) {
 
     // узнаем, сколько карточек должно быть в ряду
     function getDelta() {
-        return width >= 1000 ? 3 : width <= 999 && width >= 646 ? 2 : 1;
+        return width >= 880 ? 3 : width <= 879 && width >= 604 ? 2 : 1;
     }
 
-// узнаем, по какой индекс должны рендериться карточки
+    // узнаем, по какой индекс должны рендериться карточки
     function getIndex() {
         return (delta === 3 || delta === 2) ? delta * 4 : delta * 5;
     }
@@ -26,12 +26,11 @@ function MoviesCardList({ cards, width }) {
         setCardIndex(getIndex());
     }, [width]);
 
-     // высчитываем новую порцию карточек для отображения
+    // высчитываем новую порцию карточек для отображения
     function handleClick() {
-   
-        const nextCards = cards.slice(cardIndex, (cardIndex + delta));
-        setCardsForRender([...cardsForRender, nextCards]);
-        setCardIndex(cardIndex + delta);          
+        const nextCards = width >= 646 ? cards.slice(cardIndex, (cardIndex + delta)) : cards.slice(cardIndex, (cardIndex + delta + 1));
+        setCardsForRender([...cardsForRender, ...nextCards]);
+        setCardIndex(cardIndex + delta);
     }
 
     return (
@@ -46,10 +45,9 @@ function MoviesCardList({ cards, width }) {
                 }
             </ul>
             {
-                cards.length > (cardIndex + 1) &&
+                (cards.length + 1) > (cardIndex + 1) &&
                 <button className="movies-card-list__more-button" onClick={handleClick}>Ещё</button>
             }
-
         </div>
     );
 }

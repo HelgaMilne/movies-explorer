@@ -1,4 +1,4 @@
-.hamburger-menu{
+.hamburger-menu {
     position: relative;
     display: flex;
     top: 0;
@@ -8,17 +8,17 @@
     height: 100%;
     margin: 0;
     padding: 160px 92px 92px;
-    background-color: #fff;
+    background-color: var(--color-white);
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    z-index: 1;
     transition: right .8s ease;
+    z-index: 1;
 }
 
-.hamburger-menu_opened{
-    right: 0;   
+.hamburger-menu_opened {
+    right: 0;
 }
 
 @media screen and (max-width: 320px) {
@@ -27,4 +27,3 @@
         padding: 144px 10px 48px;
     }
 }
-

@@ -18,7 +18,7 @@ function Register() {
         <label className="form__label">
           Имя
           <input className="form__input" name='name' type='text' minLength="2"
-                        maxLength="40" required />
+            maxLength="40" required />
           <span className="form__input-error">{errorText} </span>
         </label>
 
@@ -30,7 +30,7 @@ function Register() {
 
         <label className="form__label">
           Пароль
-          <input className="form__input" name='password' type='password'  required />
+          <input className="form__input" name='password' type='password' required />
           <span className="form__input-error">{errorText} </span>
         </label>
 

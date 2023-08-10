@@ -1,22 +1,9 @@
-import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './Footer.css';
 
-function Footer() {
+function Footer({path}) {
 
-    const location = useLocation();
-
-    const pathArr = [
-        "/movies",
-        "/saved-movies",
-        "/",
-    ]
-
-    const path = pathArr.find((item) => {
-        return item === location.pathname;
-    })
-
-    let date = new Date();
+      let date = new Date();
 
     return (
         <Routes>

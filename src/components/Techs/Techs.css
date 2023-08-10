@@ -5,7 +5,7 @@
     font-size: 50px;
     line-height: 58px;
     letter-spacing: -0.04em;
-    color: #000;
+    color: var(--color-black);
     margin: 20px 0 26px;
     padding: 0;
     text-align: center;
@@ -20,7 +20,7 @@
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.04em;
-    color: #000;
+    color: var(--color-black);
     margin: 0 auto 100px;
     padding: 0;
     text-align: center;
@@ -40,20 +40,20 @@
     display: flex;
     width: 90px;
     height: 60px;
-    justify-content: center;
-    align-items: center;
     margin: 0;
     padding: 0;
+    justify-content: center;
+    align-items: center;
     font-family: inherit;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     letter-spacing: -0.04em;
-    color: #000;
+    color: var(--color-black);
     text-align: center;
     border-radius: 10px;
-    background-color: #E8E8E8;
+    background-color: var(--color-grey-01);
 }
 
 @media screen and (max-width: 1024px) {
@@ -95,8 +95,6 @@
     .techs__title {
         font-size: 30px;
         line-height: 36px;
-        margin-top: 0;
-        margin-bottom: 24px;
     }
 
     .techs__subtitle {
@@ -107,11 +105,5 @@
 
     .techs__info-list {
         max-width: 180px;
-        flex-flow: wrap;
-        /*
-        justify-content: flex-start;
-       
-        */
     }
-
 }

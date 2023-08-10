@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './FilterCheckbox.css';
 
 function FilterCheckbox() {
-    
-      const [isSelected, setIsSelected] = useState(false);
-    
+
+    const [isSelected, setIsSelected] = useState(false);
+
     function handleClick() {
         setIsSelected(!isSelected);
     }

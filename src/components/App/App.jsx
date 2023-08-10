@@ -19,7 +19,7 @@ function App() {
   const [isHamburgerMenuPopupOpen, setIsHamburgerMenuPopupOpen] = useState(false);
   const [width, setWidth] = useState(document.documentElement.clientWidth);
 
-  const menuItems = [
+  const headerMenuItems = [
     { name: 'Фильмы', url: '/movies' },
     { name: 'Сохранённые фильмы', url: '/saved-movies' },
   ];
@@ -30,13 +30,23 @@ function App() {
     { name: 'Сохранённые фильмы', url: '/saved-movies' },
   ];
 
-  const pathArr = [
+  const pathArr01 = [
     "/movies",
     "/saved-movies",
     "/profile",
   ]
 
-  const path = pathArr.find((item) => {
+  const pathArr02 = [
+    "/movies",
+    "/saved-movies",
+    "/",
+  ]
+
+  const pathForFooter = pathArr02.find((item) => {
+    return item === location.pathname;
+  })
+
+  const pathForHeader = pathArr01.find((item) => {
     return item === location.pathname;
   })
 
@@ -69,11 +79,10 @@ function App() {
     setIsHamburgerMenuPopupOpen(false);
   }
 
-
-
   return (
     <>
-      <Header menuItems={menuItems} path={path} width={width} onHamburgerMenuClick={handleHamburgerMenuClick} />
+      <Header menuItems={headerMenuItems} path={pathForHeader} width={width} onHamburgerMenuClick={handleHamburgerMenuClick} />
+
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies cards={arrMoviesCards} width={width} />} />
@@ -86,14 +95,10 @@ function App() {
 
       <HamburgerMenuPopup isOpen={isHamburgerMenuPopupOpen} onClose={closeAllPopups} menuItems={hamburgerMenuItems}></HamburgerMenuPopup>
 
-      <Footer />
+      <Footer path={pathForFooter} />
       <></>
     </>
   );
 }
 
 export default App;
-
-/*
-  <InfoTooltipPopup isOpen={isInfoTooltipPopupOpen} onClose={closeAllPopups} isError={isError} />
-  */
