@@ -41,7 +41,7 @@
 
 .header__link:hover {
     opacity: .7;
-    transition: opacity .8s;
+    transition: opacity .6s;
 }
 
 .header__link-button {
@@ -53,6 +53,11 @@
     border: none;
     border-radius: 3px;
     background-color: var(--color-black);
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
     color: var(--color-white);
     text-align: center;
     box-sizing: border-box;
@@ -61,7 +66,7 @@
 
 .header__link-button:hover {
     opacity: .8;
-    transition: opacity .8s;
+    transition: opacity .6s;
 }
 
 .header__hamburger-menu-icon {
@@ -74,14 +79,21 @@
     background-size: contain;
     background-repeat: no-repeat;
     border: none;
+    cursor: pointer;
 }
 
 .header__hamburger-menu-icon:hover {
-    opacity: .8;
-    transition: opacity .8s;
+    opacity: .7;
+    transition: opacity .5s;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1040px) {
+    .header {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .header {
         padding: 0 30px;
     }
@@ -101,6 +113,7 @@
     }
 
     .header__link-button {
+        font-size: 10px;
         width: 54px;
         height: 26px;
     }

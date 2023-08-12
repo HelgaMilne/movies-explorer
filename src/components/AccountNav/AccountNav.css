@@ -1,4 +1,4 @@
-.account__nav {
+.account-nav {
     display: flex;
     width: auto;
     height: 30px;
@@ -9,7 +9,7 @@
     gap: 17px;
 }
 
-.account__link {
+.account-nav__link {
     font-family: inherit;
     font-style: normal;
     font-weight: 500;
@@ -20,12 +20,12 @@
     cursor: pointer;
 }
 
-.account__link:hover {
+.account-nav__link:hover {
     opacity: .7;
-    transition: opacity .8s;
+    transition: opacity .6s;
 }
 
-.account__icon {
+.account-nav__icon {
     display: inline-block;
     width: 26px;
     height: 30px;

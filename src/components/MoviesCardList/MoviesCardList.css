@@ -45,7 +45,7 @@
 
 .movies-card-list__more-button:hover {
     opacity: .8;
-    transition: opacity .8s;
+    transition: opacity .6s;
 }
 
 @media screen and (max-width: 1024px) {

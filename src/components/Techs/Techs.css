@@ -1,3 +1,14 @@
+.techs {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .techs__title {
     font-family: inherit;
     font-style: normal;
@@ -105,5 +116,6 @@
 
     .techs__info-list {
         max-width: 180px;
+        justify-content: flex-start;
     }
 }

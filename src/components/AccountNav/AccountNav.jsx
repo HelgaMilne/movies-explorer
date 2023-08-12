@@ -4,9 +4,9 @@ import './AccountNav.css';
 function AccountNav() {
 
     return (
-        <div className="account__nav">
-            <Link className="account__link" to="/profile">Аккаунт</Link>
-            <span className="account__icon"></span>
+        <div className="account-nav">
+            <Link className="account-nav__link" to="/profile">Аккаунт</Link>
+            <span className="account-nav__icon"></span>
         </div>
     );
 }

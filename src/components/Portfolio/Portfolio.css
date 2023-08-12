@@ -1,3 +1,15 @@
+.portfolio {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 50px;
+}
+
 .portfolio__title {
     font-family: inherit;
     font-style: normal;
@@ -5,7 +17,7 @@
     font-size: 18px;
     line-height: 20px;
     color: var(--color-grey-03);
-    margin: 101px 0 50px;
+    margin: 101px 0 0;
     padding: 0;
     text-align: left;
     align-self: flex-start;
@@ -60,7 +72,7 @@
 
 .portfolio__list-link:hover {
     opacity: .7;
-    transition: opacity .8s;
+    transition: opacity .6s;
 }
 
 @media screen and (max-width: 1024px) {
@@ -86,9 +98,13 @@
 }
 
 @media screen and (max-width: 320px) {
+    .portfolio {
+        gap: 40px;
+    }
+
     .portfolio__title {
         font-size: 14px;
-        margin: 70px 0 40px;
+        margin-top: 70px;
     }
 
     .portfolio__list-link {

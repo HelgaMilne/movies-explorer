@@ -3,7 +3,7 @@ import './Portfolio.css';
 function Portfolio({ items }) {
 
     return (
-        <>
+        <section className="portfolio" >
             <h4 className="portfolio__title">Портфолио</h4>
             <ul className="portfolio__list">
                 {
@@ -18,7 +18,7 @@ function Portfolio({ items }) {
                     })
                 }
             </ul>
-        </>
+        </section>
     );
 }
 

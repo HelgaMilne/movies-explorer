@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -82,19 +82,19 @@ function App() {
   return (
     <>
       <Header menuItems={headerMenuItems} path={pathForHeader} width={width} onHamburgerMenuClick={handleHamburgerMenuClick} />
-
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies cards={arrMoviesCards} width={width} />} />
-        <Route path="/saved-movies" element={<SavedMovies cards={savedCards} />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/*" element={<NotFoundPage />} />
-      </Routes>
-
-      <HamburgerMenuPopup isOpen={isHamburgerMenuPopupOpen} onClose={closeAllPopups} menuItems={hamburgerMenuItems}></HamburgerMenuPopup>
-
+      <main>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/movies" element={<Movies cards={arrMoviesCards} width={width} />} />
+          <Route path="/saved-movies" element={<SavedMovies cards={savedCards} />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path='/404' element={<NotFoundPage />} />
+          <Route path="*" element={<Navigate to='/404' replace />} />
+        </Routes>
+        <HamburgerMenuPopup isOpen={isHamburgerMenuPopupOpen} onClose={closeAllPopups} menuItems={hamburgerMenuItems}></HamburgerMenuPopup>
+      </main>
       <Footer path={pathForFooter} />
       <></>
     </>
@@ -102,3 +102,5 @@ function App() {
 }
 
 export default App;
+
+

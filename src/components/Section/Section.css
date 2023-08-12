@@ -10,11 +10,35 @@
     box-sizing: border-box;
 }
 
+.section__headering-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 0 70px;
+    padding: 0;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    border-bottom: 1px solid var(--color-black);
+}
+
+.section__headering-title {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    color: var(--color-black);
+    margin: 0 0 23px;
+    padding: 0;
+    text-align: left;
+}
+
 .section_for_promo {
     position: relative;
     padding-top: 75px;
     padding-bottom: 75px;
-    align-items: flex-start;
     background-color: var(--color-promo);
 }
 
@@ -34,24 +58,6 @@
     background-color: var(--color-grey-05);
 }
 
-.section_for_saved-movies {
-    padding-bottom: 214px;
-}
-
-.section_for_not-found-page {
-    justify-content: flex-end;
-}
-
-.section_for_profile {
-    height: calc(100vh - 74px);
-}
-
-.section_for_login,
-.section_for_register,
-.section_for_not-found-page {
-    height: 100vh;
-}
-
 @media screen and (max-width: 1110px) {
     .section {
         padding: 70px 30px;
@@ -59,7 +65,6 @@
 
     .section_for_promo {
         padding: 218px 44px 75px;
-        align-items: center;
     }
 }
 
@@ -72,10 +77,6 @@
 @media screen and (max-width: 768px) {
     .section {
         padding: 90px 50px;
-    }
-
-    .section_for_movies {
-        padding: 80px 30px 70px;
     }
 }
 
@@ -95,31 +96,17 @@
         padding-right: 18px;
     }
 
+    .section__headering-container {
+        margin-bottom: 60px;
+    }
+
+    .section__headering-title {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 28px;
+    }
+
     .section_for_promo {
-        padding-top: 67px;
-        padding-bottom: 30px;
-    }
-
-    .section_for_movies {
-        padding-top: 90px;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .section_for_saved-movies {
-        padding: 90px 10px 154px;
-    }
-
-    .section_for_profile {
-        padding: 70px 30px 40px;
-    }
-
-    .section_for_login,
-    .section_for_register {
-        padding: 56px 30px 30px;
-    }
-
-    .section_for_not-found-page {
-        padding: 30px;
+        padding: 67px 0 30px;
     }
 }

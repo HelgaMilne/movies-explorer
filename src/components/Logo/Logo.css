@@ -6,6 +6,7 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    flex-shrink: 0;
 }
 
 .logo_align-self {
@@ -14,10 +15,10 @@
 
 .logo:hover {
     opacity: .7;
-    transition: opacity .8s;
+    transition: opacity .6s;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
     .logo_align-self {
         align-self: center;
     }

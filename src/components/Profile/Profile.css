@@ -1,3 +1,15 @@
+.profile {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 74px);
+    margin: 0 auto;
+    padding: 50px 30px 50px;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+}
+
 .profile__title {
     font-family: inherit;
     font-style: normal;
@@ -5,7 +17,7 @@
     font-size: 24px;
     line-height: 29px;
     color: var(--color-black);
-    margin: 4px 0 123px;
+    margin: 24px 0 123px;
     padding: 0;
     text-align: center;
 }
@@ -14,7 +26,7 @@
     display: flex;
     width: 100%;
     max-width: 410px;
-    height: 100vh;
+    height: 100%;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
@@ -64,7 +76,17 @@
     border: none;
     appearance: none;
     box-sizing: border-box;
+    flex-shrink: 0;
     flex-grow: 1;
+}
+
+.profile__form-input::placeholder {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: var(--color-grey-03);
 }
 
 .profile__form-input:focus {
@@ -78,7 +100,7 @@
 .profile__form-submit-button {
     display: flex;
     width: 100%;
-    margin: 16px 0;
+    margin: 210px 0 16px;
     padding: 0;
     flex-flow: column nowrap;
     justify-content: flex-end;
@@ -100,7 +122,7 @@
 
 .profile__form-submit-button:hover {
     opacity: .8;
-    transition: opacity .8s;
+    transition: opacity .6s;
 }
 
 .profile__exit-link {
@@ -110,7 +132,7 @@
     font-size: 13px;
     line-height: 16px;
     color: var(--color-accent);
-    margin: 0;
+    margin: 0 0 20px;
     padding: 0;
     text-align: center;
     text-decoration: none;
@@ -120,18 +142,49 @@
 
 .profile__exit-link:hover {
     opacity: .7;
-    transition: opacity .8s;
+    transition: opacity .6s;
 }
 
 @media screen and (max-width: 768px) {
+    .profile {
+        justify-content: center;
+    }
+
     .profile__title {
         margin-bottom: 96px;
+    }
+
+    .profile__form {
+        height: auto;
+    }
+
+    .profile__form-submit-button {
+        flex-grow: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile {
+        justify-content: flex-start;
+    }
+
+    .profile__form {
+        height: 100%;
+    }
+
+    .profile__form-submit-button {
+        margin-top: 100px;
+        flex-grow: 1;
     }
 }
 
 @media screen and (max-width: 320px) {
+    .profile {
+        padding: 50px 30px 20px;
+    }
+
     .profile__title {
-        margin-top: 0;
+        margin-top: 20px;
         margin-bottom: 80px;
     }
 

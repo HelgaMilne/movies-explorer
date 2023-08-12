@@ -1,5 +1,5 @@
-import Section from '../Section/Section';
 import Form from '../Form/Form';
+import './Login.css';
 
 function Login() {
 
@@ -12,23 +12,23 @@ function Login() {
     const formLink = '/signup';
 
     return (
-        <Section sectionName="login">
+        <section className="login">
             <Form formTitle={formTitle} formName={formName} buttonText={buttonText} formText={formText} formLinkText={formLinkText} formLink={formLink}>
 
                 <label className="form__label">
                     E-mail
-                    <input className="form__input" name='email' type='email' required />
+                    <input className="form__input" name='email' type='email' placeholder='email' required />
                     <span className="form__input-error  form__input-error_active">{errorText} </span>
                 </label>
 
                 <label className="form__label">
                     Пароль
-                    <input className="form__input" name='password' type='password' required />
+                    <input className="form__input" name='password' type='password' placeholder='паролль' required />
                     <span className="form__input-error">{errorText} </span>
                 </label>
 
             </Form>
-        </Section>
+        </section>
     )
 }
 

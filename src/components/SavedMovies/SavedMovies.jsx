@@ -1,14 +1,14 @@
-import Section from '../Section/Section';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import './SavedMovies.css';
 
 function SavedMovies({ cards }) {
 
     return (
-        <Section sectionName="saved-movies">
+        <section className="saved-movies">
             <SearchForm />
             <MoviesCardList cards={cards} />
-        </Section>
+        </section>
     );
 }
 

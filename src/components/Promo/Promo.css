@@ -1,3 +1,14 @@
+.promo {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 .promo__title {
     width: 100%;
     max-width: 640px;
@@ -60,10 +71,14 @@
 
 .promo__link:hover {
     opacity: .7;
-    transition: opacity .8s;
+    transition: opacity .6s;
 }
 
 @media screen and (max-width: 1110px) {
+    .promo {
+        align-items: center;
+    }
+
     .promo__image {
         position: static;
         width: 100%;
@@ -115,7 +130,6 @@
         background-size: cover;
     }
 }
-
 
 @media screen and (max-width: 480px) {
     .promo__title {

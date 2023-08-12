@@ -1,3 +1,15 @@
+.movies {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 70px;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
 .movies__message {
     display: flex;
     width: 70%;
@@ -20,13 +32,22 @@
     display: none;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1040px) {
+    .movies {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
     .movies__message {
         height: 150px;
     }
 }
 
 @media screen and (max-width: 768px) {
+    .movies {
+        padding: 80px 30px 70px;
+    }
+
     .movies__message {
         width: 80%;
     }
@@ -42,6 +63,12 @@
 }
 
 @media screen and (max-width: 320px) {
+    .movies {
+        padding-top: 90px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
     .movies__message {
         font-size: 12px;
         line-height: 16px;

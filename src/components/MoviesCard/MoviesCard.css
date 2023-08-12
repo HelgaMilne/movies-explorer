@@ -98,8 +98,8 @@
 }
 
 .movies-card__save-button:hover {
-    opacity: .8;
-    transition: opacity .8s;
+    opacity: .7;
+    transition: opacity .6s;
 }
 
 @media screen and (max-width: 320px) {

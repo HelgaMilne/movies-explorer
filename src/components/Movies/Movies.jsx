@@ -1,4 +1,3 @@
-import Section from '../Section/Section';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -10,12 +9,12 @@ function Movies({ cards, width }) {
     const message = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.';
 
     return (
-        <Section sectionName="movies">
+        <section className="movies">
             <SearchForm />
             <Preloader onloaded={onloaded} />
             <span className="movies__message movies__message_hidden">{message}</span>
             <MoviesCardList cards={cards} width={width} />
-        </Section>
+        </section>
     );
 }
 

@@ -86,7 +86,9 @@
 
 .search-form__button:hover {
     background-color: var(--color-accent);
+    opacity: .8;
     transition: color .8s;
+    transition: opacity .6s;
 }
 
 .search-form__input-error {

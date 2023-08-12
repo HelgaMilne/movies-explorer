@@ -34,6 +34,11 @@
     background-image: url(../../images/checkbox-active.svg);
 }
 
+.filter-checkbox__visible-checkbox:hover {
+    opacity: .8;
+    transition: opacity .6s;
+}
+
 .filter-checkbox__label {
     display: flex;
     flex-flow: row nowrap;

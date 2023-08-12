@@ -1,6 +1,5 @@
 import React from 'react';
 import Section from '../Section/Section';
-import SectionHeadering from '../SectionHeadering/SectionHeadering';
 import TwoColumns from '../TwoColumns/TwoColumns';
 import TimelineBar from '../TimelineBar/TimelineBar';
 
@@ -16,8 +15,7 @@ function AboutProject() {
     const timelineSubTitle02 = 'Front-end';
 
     return (
-        <Section sectionName="about-project" id="about-project">
-            <SectionHeadering headering={headering} />
+        <Section sectionName="about-project" id="about-project" headering={headering} >
             <TwoColumns title01={title01} title02={title02} paragraph01={paragraph01} paragraph02={paragraph02} />
             <TimelineBar title01={timelineTitle01} title02={timelineTitle02} subTitle01={timelineSubTitle01} subTitle02={timelineSubTitle02} />
         </Section>
