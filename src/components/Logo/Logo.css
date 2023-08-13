@@ -1,0 +1,25 @@
+.logo {
+    display: block;
+    width: 38px;
+    height: 38px;
+    background-image: url(../../images/logo.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+
+.logo_align-self {
+    align-self: flex-start;
+}
+
+.logo:hover {
+    opacity: .7;
+    transition: opacity .6s;
+}
+
+@media screen and (max-width: 480px) {
+    .logo_align-self {
+        align-self: center;
+    }
+}

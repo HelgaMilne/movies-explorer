@@ -1,0 +1,209 @@
+.form-section {
+    display: flex;
+    width: 100%;
+    max-width: 396px;
+    height: 100%;
+    max-height: 560px;
+    margin: 0;
+    padding: 0;
+    flex-flow: column nowrap;
+    justify-content: stretch;
+    align-content: stretch;
+    align-items: center;
+}
+
+.form-section__title {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: var(--color-black);
+    margin: 40px 0;
+    padding: 0;
+    text-align: left;
+    align-self: flex-start;
+}
+
+.form {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    flex-flow: column nowrap;
+    justify-content: stretch;
+    align-items: center;
+}
+
+.form__children-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    gap: 5px;
+    flex-grow: 1;
+}
+
+.form__label {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-grey-03);
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.form__input,
+.form__input:valid {
+    display: flex;
+    width: 100%;
+    height: 46px;
+    margin: 10px 0 5px;
+    padding: 0 15px;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--color-grey-02);
+    border-radius: 8px;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: var(--color-black);
+    text-align: left;
+    border: none;
+    appearance: none;
+    box-sizing: border-box;
+}
+
+.form__input::placeholder {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-grey-03);
+}
+
+.form__input:focus {
+    outline: none;
+    background-color: var(--color-promo);
+}
+
+.form__input:invalid,
+.form__input_error {
+    color: var(--color-accent);
+}
+
+.form__input-error {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: var(--color-accent);
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    visibility: hidden;
+}
+
+.form__input-error_active {
+    visibility: visible;
+}
+
+.form__submit-button {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    margin: 70px 0 11px;
+    padding: 0;
+    background-color: var(--color-black);
+    border-radius: 3px;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--color-white);
+    text-align: center;
+    border: none;
+    appearance: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.form__submit-button:hover {
+    opacity: .8;
+    transition: opacity .6s;
+}
+
+.form__submit-button:disabled {
+    opacity: .4;
+    transition: opacity .6s;
+}
+
+.form-section__text {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--color-grey-03);
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+}
+
+.form-section__link {
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+.form-section__link:hover {
+    opacity: .7;
+    transition: opacity .6s;
+}
+
+@media screen and (max-width: 640px) {
+    .form-section {
+        max-height: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-section__title {
+        align-self: center;
+    }
+
+    .form-section__text {
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .form-section__title {
+        margin: 50px 0 80px;
+    }
+
+    .form__submit-button {
+        margin-bottom: 14px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

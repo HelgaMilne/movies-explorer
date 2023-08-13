@@ -1,0 +1,112 @@
+.section {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 70px;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.section__headering-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 0 70px;
+    padding: 0;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    border-bottom: 1px solid var(--color-black);
+}
+
+.section__headering-title {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    color: var(--color-black);
+    margin: 0 0 23px;
+    padding: 0;
+    text-align: left;
+}
+
+.section_for_promo {
+    position: relative;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    background-color: var(--color-promo);
+}
+
+.section_for_about-project {
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+
+.section_for_about-me {
+    padding-top: 110px;
+    padding-bottom: 125px;
+}
+
+.section_for_techs {
+    padding-top: 110px;
+    padding-bottom: 110px;
+    background-color: var(--color-grey-05);
+}
+
+@media screen and (max-width: 1110px) {
+    .section {
+        padding: 70px 30px;
+    }
+
+    .section_for_promo {
+        padding: 218px 44px 75px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .section {
+        padding: 70px 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 90px 50px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .section {
+        padding: 70px 30px;
+    }
+
+    .section_for_promo {
+        padding: 80px 0 50px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .section__headering-container {
+        margin-bottom: 60px;
+    }
+
+    .section__headering-title {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 28px;
+    }
+
+    .section_for_promo {
+        padding: 67px 0 30px;
+    }
+}
