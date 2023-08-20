@@ -32,9 +32,14 @@
     margin: 0;
     padding: 0;
     background-color: var(--color-grey-02);
-    background-image: url(../../images/icon-account.svg);
+    background-image: url(../../images/icon-account-black.svg);
     background-size: 12px 14px;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 4px;
+}
+
+.account-nav__icon_promo {
+    background-color: var(--color-black);
+    background-image: url(../../images/icon-account-white.svg);
 }

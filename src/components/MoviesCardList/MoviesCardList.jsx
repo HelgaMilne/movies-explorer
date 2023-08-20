@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
@@ -17,7 +17,7 @@ function MoviesCardList({ cards, width }) {
     const [delta, setDelta] = useState(getDelta());
     const [cardIndex, setCardIndex] = useState(getIndex());
     // первая порция карточек для отображения
-    const firstCards = cards.slice(0, cardIndex);
+    const firstCards = (cards === null) ? [] : cards.slice(0, cardIndex);
     const [cardsForRender, setCardsForRender] = useState(firstCards);
 
     // если ширина экрана поменяется, обновить количество карточек в ряду и индекс
@@ -37,9 +37,9 @@ function MoviesCardList({ cards, width }) {
         <div className="movies-card-list">
             <ul className="movies-card-list__container">
                 {
-                    cardsForRender.map((card) => {
+                    cards.map((card) => {
                         return (
-                            <MoviesCard card={card} key={card._id} />
+                            <MoviesCard card={card} key={card.id} />
                         );
                     })
                 }

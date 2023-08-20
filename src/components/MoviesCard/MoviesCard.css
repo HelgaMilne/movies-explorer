@@ -1,6 +1,7 @@
 .movies-card {
     display: flex;
     width: 100%;
+    max-width: 360px;       
     height: auto;
     margin: 0;
     padding: 0;

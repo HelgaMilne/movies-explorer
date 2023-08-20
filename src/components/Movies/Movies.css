@@ -1,11 +1,11 @@
 .movies {
     display: flex;
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0 auto;
     padding: 70px;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     box-sizing: border-box;
 }
