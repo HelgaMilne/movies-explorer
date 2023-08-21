@@ -1,13 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm({ keyword, filter, onGetMovies }) {
 
     const [isValid, setIsValid] = useState(true);
-    const [isCheckBoxActive, setIsCheckBoxActive] = useState(filter === true ? true : false);
-    const [value, setValue] = useState(keyword || '');
+    const [isCheckBoxActive, setIsCheckBoxActive] = useState(filter);
+    const [value, setValue] = useState(keyword);
     const [errorMessage, setErrorMessage] = useState('');
+
+    useEffect(() => {
+        onGetMovies({
+            keyword: value,
+            filter: isCheckBoxActive,
+        });
+    }, [isCheckBoxActive]);
 
     function handleChange(event) {
         if (event.target.validity.patternMismatch) {
@@ -23,14 +30,6 @@ function SearchForm({ keyword, filter, onGetMovies }) {
 
     function changeFilterState(state) {
         setIsCheckBoxActive(state);
-        /*
-        if (filter !== undefined && isValid) {
-            onGetMovies({
-                keyword: value,
-                filter: isCheckBoxActive,
-            });
-        }
-        */
     }
 
     function onSubmit(event) {

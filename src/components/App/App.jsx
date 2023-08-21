@@ -101,17 +101,29 @@ function App() {
       });
   }, [loggedIn]);
 
+  useEffect(function () {
+    if (loggedIn) {
+      mainApi.getMovies()
+        .then((movies) => {
+          movies.length === 0 ? setSelectedMovies([]) : setSelectedMovies(movies);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  }, [loggedIn]);
+
   function lookInLocalStorage() {
     if (localStorage.length === 0) {
       return {
-        keyword: undefined,
-        filter: undefined,
+        keyword: '',
+        filter: false,
         filteredMovies: [],
       };
     } else {
       return {
         keyword: localStorage.getItem('keyword'),
-        filter: localStorage.getItem('filter'),
+        filter: localStorage.getItem('filter') === "true" ? true : false,
         filteredMovies: JSON.parse(localStorage.getItem('filteredMovies')),
       }
     }
@@ -121,6 +133,7 @@ function App() {
     localStorage.removeItem('keyword');
     localStorage.removeItem('filter');
     localStorage.removeItem('filteredMovies');
+    console.log(localStorage);
   }
 
   function handleRegister(userData) {
@@ -139,14 +152,11 @@ function App() {
   function handleLogin(userData) {
     mainApi.login(userData)
       .then((user) => {
-        console.log("мы попали в then");
-        console.log(user);
         setLoggedIn(true);
         setCurrentUser(user);
         navigate('/movies', { replace: true, })
       })
       .catch((err) => {
-        console.log("мы попали в catch");
         setLoginApiMessage(err.message);
         console.log(err);
       })
@@ -169,6 +179,12 @@ function App() {
       .then(() => {
         setLoggedIn(false);
         setCurrentUser({});
+        setSelectedMovies([]);
+        setSearchData({
+          keyword: '',
+          filter: false,
+          filteredMovies: [],
+        })
         clearLocalStorage();
         navigate('/', { replace: true, })
       })
@@ -203,6 +219,35 @@ function App() {
     }
   }
 
+  function handleFilterUserMovies(options) {
+    setSelectedMovies(filterMovies(selectedMovies, options));
+  }
+
+  function handleSaveMovie(movieData) {
+    console.log("сохраняю фильм");
+    mainApi.addMovie(movieData)
+      .then((movie) => {
+        setSelectedMovies(...selectedMovies, movie);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function handleRemoveMovie(movieData) {
+    console.log("удаляю фильм");;
+    mainApi.deleteMovie(movieData)
+      .then((movie) => {
+        const newSelectedMovies = selectedMovies.filter((item) => {
+          return (item._id !== movie._id);
+        })
+        setSelectedMovies(newSelectedMovies);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   function handleClearApiMessage() {
     setRegisterApiMessage('');
     setLoginApiMessage('');
@@ -222,16 +267,53 @@ function App() {
       <Header menuItems={headerMenuItems} path={pathForHeader} width={width} onHamburgerMenuClick={handleHamburgerMenuClick} loggedIn={loggedIn} />
       <main>
         <Routes>
-          <Route path="/movies" element={<ProtectedRoute element={Movies} cards={searchData.filteredMovies} keyword={searchData.keyword} filter={searchData.filter} width={width} loggedIn={loggedIn} onGetMovies={handleGetMovies} />} />
-          <Route path="/saved-movies" element={<ProtectedRoute element={SavedMovies} cards={selectedMovies} loggedIn={loggedIn} />} />
-          <Route path="/profile" element={<ProtectedRoute element={Profile} onUpdate={handleUpdateUser} onLogout={handleLogout} loggedIn={loggedIn} apiMessage={profileApiMessage} onClearApiMessage={handleClearApiMessage} location={location} />} />
+          <Route path="/movies" element={<ProtectedRoute
+            element={Movies}
+            movies={searchData.filteredMovies}
+            keyword={searchData.keyword}
+            filter={searchData.filter}
+            onGetMovies={handleGetMovies}
+            onClickMovie={handleSaveMovie}
+            width={width}
+            loggedIn={loggedIn}
+          />} />
+          <Route path="/saved-movies" element={<ProtectedRoute
+            element={SavedMovies}
+            movies={selectedMovies}
+            onGetMovies={handleFilterUserMovies}
+            onClickMovie={handleRemoveMovie}
+            width={width}
+            loggedIn={loggedIn}
+          />} />
+          <Route path="/profile" element={<ProtectedRoute
+            element={Profile}
+            onUpdate={handleUpdateUser}
+            onLogout={handleLogout}
+            onClearApiMessage={handleClearApiMessage}
+            apiMessage={profileApiMessage}
+            location={location}
+            loggedIn={loggedIn}
+          />} />
           <Route path="/" element={<Main />} />
-          <Route path="/signin" element={<Login onLogin={handleLogin} apiMessage={loginApiMessage} onClearApiMessage={handleClearApiMessage} location={location} />} />
-          <Route path="/signup" element={<Register onRegister={handleRegister} apiMessage={registerApiMessage} onClearApiMessage={handleClearApiMessage} location={location} />} />
+          <Route path="/signin" element={<Login
+            onLogin={handleLogin}
+            apiMessage={loginApiMessage}
+            onClearApiMessage={handleClearApiMessage}
+            location={location}
+          />} />
+          <Route path="/signup" element={<Register
+            onRegister={handleRegister}
+            apiMessage={registerApiMessage}
+            onClearApiMessage={handleClearApiMessage}
+            location={location}
+          />} />
           <Route path='/404' element={<NotFoundPage />} />
           <Route path="*" element={<Navigate to='/404' replace />} />
         </Routes>
-        <HamburgerMenuPopup isOpen={isHamburgerMenuPopupOpen} onClose={closeAllPopups} menuItems={hamburgerMenuItems}></HamburgerMenuPopup>
+        <HamburgerMenuPopup
+          isOpen={isHamburgerMenuPopupOpen}
+          onClose={closeAllPopups}
+          menuItems={hamburgerMenuItems} />
       </main>
       <Footer path={pathForFooter} />
     </CurrentUserContext.Provider>

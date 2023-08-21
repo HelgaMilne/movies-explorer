@@ -30,7 +30,7 @@
     cursor: pointer;
 }
 
-.filter-checkbox__visible-checkbox_active {
+.filter-checkbox__invisible-checkbox:checked + .filter-checkbox__visible-checkbox  {
     background-image: url(../../images/checkbox-active.svg);
 }
 

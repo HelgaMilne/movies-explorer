@@ -6,7 +6,7 @@ import InfoApi from '../InfoApi/InfoApi';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './Movies.css';
 
-function Movies({ cards, keyword, filter, width, onGetMovies }) {
+function Movies({ movies, keyword, filter, width, onGetMovies, onClickMovie }) {
 
     const currentUser = React.useContext(CurrentUserContext);
     const onloaded = true;
@@ -17,7 +17,7 @@ function Movies({ cards, keyword, filter, width, onGetMovies }) {
             <SearchForm keyword={keyword} filter={filter} onGetMovies={onGetMovies} />
             <Preloader onloaded={onloaded} />
             <span className="movies__message movies__message_hidden">{message}</span>
-            <MoviesCardList cards={cards} width={width} />
+            <MoviesCardList movies={movies} width={width} onClickMovie={onClickMovie} isSavedMovie={false} />
         </section>
     );
 }

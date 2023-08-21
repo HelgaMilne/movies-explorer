@@ -48,7 +48,7 @@ class MainApi {
     checkToken() {
         return this._request('/users/me', {
             method: 'GET',
-            headers: this.headers,
+            headers: this._headers,
             credentials: 'include',
         });
     }
@@ -69,6 +69,32 @@ class MainApi {
             body: JSON.stringify(bodyObj),
         });
     }
+
+    getMovies() {
+        return this._request('/movies', {
+            method: 'GET',
+            headers: this._headers,
+            credentials: 'include',
+        });
+    }
+
+    addMovie(bodyObj) {
+        return this._request('/movies', {
+            method: 'POST',
+            headers: this._headers,
+            credentials: 'include',
+            body: JSON.stringify(bodyObj),
+        });
+    }
+
+    deleteMovie(endUrl) {
+        return this._request('/movies/' + endUrl, {
+            method: 'DELETE',
+            headers: this._headers,
+            credentials: 'include',
+        });
+    }
+
 }
 
 const mainApi = new MainApi({
