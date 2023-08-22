@@ -2,18 +2,27 @@ import { useState, useEffect } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm({ keyword, filter, onGetMovies }) {
+function SearchForm({ keyword = '', filter = false, onGetMovies, isSavedMovies }) {
 
-    const [isValid, setIsValid] = useState(true);
+    const [isValid, setIsValid] = useState(false);
     const [isCheckBoxActive, setIsCheckBoxActive] = useState(filter);
     const [value, setValue] = useState(keyword);
     const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
-        onGetMovies({
-            keyword: value,
-            filter: isCheckBoxActive,
-        });
+        if (isSavedMovies) {
+            onGetMovies({
+                keyword: value,
+                filter: isCheckBoxActive,
+            });
+        } else {
+            if (value) {
+                onGetMovies({
+                    keyword: value,
+                    filter: isCheckBoxActive,
+                });
+            }
+        }
     }, [isCheckBoxActive]);
 
     function handleChange(event) {

@@ -1,11 +1,11 @@
 import { useEffect, useState, useContext } from 'react';
 import './MovieCard.css';
 
-function MovieCard({ movie, onClickMovie, isSavedMovie }) {
+function MovieCard({ movie, onClickMovie, isSavedMovies }) {
 
-    const [isLiked, setIsLiked] = useState(false);
-    const imageUrl = isSavedMovie ? movie.image : `https://api.nomoreparties.co${movie.image.url}`;
-    const thumbnailUrl = isSavedMovie ? movie.thumbnail : `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`;
+    const [isLiked, setIsLiked] = useState(movie.isLiked);
+    const imageUrl = isSavedMovies ? movie.image : `https://api.nomoreparties.co${movie.image.url}`;
+    const thumbnailUrl = isSavedMovies ? movie.thumbnail : `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`;
     const trailerLink = movie.trailerLink;
     const duration = movie.duration <= 60 ?
         `${movie.duration} минут` :
@@ -13,11 +13,11 @@ function MovieCard({ movie, onClickMovie, isSavedMovie }) {
             `${Math.floor(movie.duration / 60)} час ${movie.duration % 60} мин.` :
             `${Math.floor(movie.duration / 60)} часа ${movie.duration % 60} мин.`;
 
-    const button = isSavedMovie ?
-        <button className="movies-card__save-button movies-card__save-button_remove" type="button" onClick={handleClick}></button>
+    const button = isSavedMovies ?
+        <button className="movies-card__save-button movies-card__save-button_remove" type="button" onClick={handleRemove}></button>
         : <button className={`movies-card__save-button ${isLiked ? 'movies-card__save-button_active' : ''} `} type="button" onClick={handleClick} >{isLiked ? '' : 'Сохранить'}</button>;
 
-    const movieData = isSavedMovie ? movie._id
+    const movieData = isSavedMovies ? movie._id
         : {
             movieId: movie.id,
             country: movie.country,
@@ -29,12 +29,17 @@ function MovieCard({ movie, onClickMovie, isSavedMovie }) {
             trailerLink: movie.trailerLink,
             thumbnail: thumbnailUrl,
             nameRU: movie.nameRU,
-            nameEN: movie.nameEN,
+            nameEN: movie.nameEN, 
         };
 
     function handleClick() {
+        console.log(`буду что-то делать с фильмом ${!isLiked}`);;
+        setIsLiked(!isLiked);     
+        onClickMovie(movieData, !isLiked);
+    }
+
+    function handleRemove() {
         onClickMovie(movieData);
-        setIsLiked(!isLiked);
     }
 
     return (
@@ -52,3 +57,16 @@ function MovieCard({ movie, onClickMovie, isSavedMovie }) {
 }
 
 export default MovieCard;
+
+/*
+    useEffect(() => {
+        if (!isSavedMovies) {
+            console.log(`буду что-то делать с фильмом ${isLiked}`);;
+            onClickMovie(movieData);
+        }
+    }, [isLiked]);
+ function handleClick() {
+        onClickMovie(movieData);
+        setIsLiked(!isLiked);
+    }
+    */

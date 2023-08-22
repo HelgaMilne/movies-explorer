@@ -1,10 +1,10 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi.js';
 import moviesApi from '../../utils/MoviesApi.js';
-import filterMovies from '../../utils/MoviesSelector';
+import filterMovies from '../../utils/filterMovies.js';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -30,8 +30,8 @@ function App() {
   const [profileApiMessage, setProfileApiMessage] = useState('');
   const [allMovies, setAllMovies] = useState([]);
   const [searchData, setSearchData] = useState(lookInLocalStorage());
-
-  const [selectedMovies, setSelectedMovies] = useState([]);
+  const [userMovies, setUserMovies] = useState([]);
+  const [filteredUserMovies, setFilteredUserMovies] = useState([]);
 
   const headerMenuItems = [
     { name: 'Фильмы', url: '/movies' },
@@ -102,16 +102,14 @@ function App() {
   }, [loggedIn]);
 
   useEffect(function () {
-    if (loggedIn) {
-      mainApi.getMovies()
-        .then((movies) => {
-          movies.length === 0 ? setSelectedMovies([]) : setSelectedMovies(movies);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    }
-  }, [loggedIn]);
+    mainApi.getMovies()
+      .then((movies) => {
+        setUserMovies(movies);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, []);
 
   function lookInLocalStorage() {
     if (localStorage.length === 0) {
@@ -129,11 +127,22 @@ function App() {
     }
   }
 
+  function putInLocalStorage(result, options) {
+    setSearchData({
+      keyword: options.keyword,
+      filter: options.filter,
+      filteredMovies: result,
+    });
+    localStorage.setItem('keyword', options.keyword);
+    localStorage.setItem('filter', options.filter);
+    localStorage.setItem('filteredMovies', JSON.stringify(result));
+  }
+
   function clearLocalStorage() {
     localStorage.removeItem('keyword');
     localStorage.removeItem('filter');
     localStorage.removeItem('filteredMovies');
-    console.log(localStorage);
+    console.log(` в хранилище ${localStorage.getItem('filteredMovies')}`)
   }
 
   function handleRegister(userData) {
@@ -179,7 +188,8 @@ function App() {
       .then(() => {
         setLoggedIn(false);
         setCurrentUser({});
-        setSelectedMovies([]);
+        setUserMovies([]);
+        setAllMovies([]);
         setSearchData({
           keyword: '',
           filter: false,
@@ -191,17 +201,6 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }
-
-  function putInLocalStorage(result, options) {
-    setSearchData({
-      keyword: options.keyword,
-      filter: options.filter,
-      filteredMovies: result,
-    });
-    localStorage.setItem('keyword', options.keyword);
-    localStorage.setItem('filter', options.filter);
-    localStorage.setItem('filteredMovies', JSON.stringify(result));
   }
 
   function handleGetMovies(options) {
@@ -220,28 +219,37 @@ function App() {
   }
 
   function handleFilterUserMovies(options) {
-    setSelectedMovies(filterMovies(selectedMovies, options));
+    setFilteredUserMovies(filterMovies(userMovies, options));
   }
 
-  function handleSaveMovie(movieData) {
-    console.log("сохраняю фильм");
-    mainApi.addMovie(movieData)
-      .then((movie) => {
-        setSelectedMovies(...selectedMovies, movie);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+  function handleLikeMovie(movieData, isLiked) {
+    if (isLiked) {
+      console.log("сохраняю фильм");
+      mainApi.addMovie(movieData)
+        .then((movie) => {
+          setUserMovies([...userMovies, movie]);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    } else {
+      if (userMovies.length !== 0) {
+        const removedMovie = userMovies.find((item) => {
+          return item.id === movieData.id;
+        });
+        handleRemoveMovie(removedMovie._id)
+      }
+    }
   }
 
   function handleRemoveMovie(movieData) {
     console.log("удаляю фильм");;
     mainApi.deleteMovie(movieData)
       .then((movie) => {
-        const newSelectedMovies = selectedMovies.filter((item) => {
+        const newUserMovies = userMovies.filter((item) => {
           return (item._id !== movie._id);
         })
-        setSelectedMovies(newSelectedMovies);
+        setUserMovies(newUserMovies);
       })
       .catch((err) => {
         console.log(err);
@@ -270,16 +278,18 @@ function App() {
           <Route path="/movies" element={<ProtectedRoute
             element={Movies}
             movies={searchData.filteredMovies}
+            savedMovies={userMovies}
             keyword={searchData.keyword}
             filter={searchData.filter}
             onGetMovies={handleGetMovies}
-            onClickMovie={handleSaveMovie}
+            onClickMovie={handleLikeMovie}
             width={width}
             loggedIn={loggedIn}
           />} />
           <Route path="/saved-movies" element={<ProtectedRoute
             element={SavedMovies}
-            movies={selectedMovies}
+            savedMovies={userMovies}
+            filteredMovies={filteredUserMovies}
             onGetMovies={handleFilterUserMovies}
             onClickMovie={handleRemoveMovie}
             width={width}

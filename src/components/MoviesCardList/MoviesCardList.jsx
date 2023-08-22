@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import MovieCard from '../MovieCard/MovieCard';
 import './MoviesCardList.css';
 
-function MoviesCardList({ movies, width, onClickMovie, isSavedMovie }) {
+function MoviesCardList({ movies, width, onClickMovie, isSavedMovies }) {
 
     // узнаем, сколько карточек должно быть в ряду
     function getDelta() {
@@ -39,7 +39,7 @@ function MoviesCardList({ movies, width, onClickMovie, isSavedMovie }) {
                 {
                     movies.map((movie) => {
                         return (
-                            <MovieCard movie={movie} key={movie.id || movie._id} onClickMovie={onClickMovie} isSavedMovie={isSavedMovie} />
+                            <MovieCard movie={movie} key={movie.id || movie._id} onClickMovie={onClickMovie} isSavedMovies={isSavedMovies} />
                         );
                     })
                 }
