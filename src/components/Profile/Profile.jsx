@@ -4,7 +4,7 @@ import InfoAuthApi from '../InfoAuthApi/InfoAuthApi';
 import { useForm } from '../../hooks/useForm';
 import './Profile.css';
 
-function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage, location }) {
+function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage }) {
 
     const currentUser = useContext(CurrentUserContext);
 
@@ -72,8 +72,7 @@ function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage, location }
 
                 <label className="profile__form-label profile__form-label_align_down">
                     <input className="profile__form-input" name="email" type="email"
-                        onChange={handleChange} placeholder='email' value={values.email || ''}  
-                      required />
+                        onChange={handleChange} placeholder='email' value={values.email || ''} required />
                     <span className="profile__form-label-name"> E-mail</span>
                 </label>
                 <span className={`profile__input-error ${isValid ? "" : 'profile__input-error_active'}`}>{errorEmail} </span>

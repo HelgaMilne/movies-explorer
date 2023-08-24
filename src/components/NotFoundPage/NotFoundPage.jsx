@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import './NotFoundPage.css';
 
-function NotFoundPage({ loggedIn }) {
+function NotFoundPage() {
 
     const navigate = useNavigate();
 

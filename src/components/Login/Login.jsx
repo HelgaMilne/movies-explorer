@@ -45,9 +45,7 @@ function Login({ onLogin, apiMessage, onClearApiMessage }) {
             "password": values.password,
         });
     }
-console.log(validationState);
-console.log(errorEmail);
-console.log(errorPassword);
+
     return (
         <section className="login">
             <Form

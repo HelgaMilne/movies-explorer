@@ -56,14 +56,6 @@ class MainApi {
         });
     }
 
-    getUserProfile() {
-        return this._request('/users/me', {
-            method: 'GET',
-            headers: this._headers,
-            credentials: 'include',
-        });
-    }
-
     editUserProfile(bodyObj) {
         return this._request('/users/me', {
             method: 'PATCH',
@@ -101,14 +93,10 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.cinema.nomoredomains.xyz',
     headers: {
         'content-type': 'application/json; charset=UTF-8',
     },
 });
 
 export default mainApi;
-
-/*
- baseUrl: 'https://api.cinema.nomoredomains.xyz',
-*/

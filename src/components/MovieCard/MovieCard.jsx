@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState } from 'react';
 import './MovieCard.css';
 
 function MovieCard({ movie, onClickMovie, isSavedMovies }) {
@@ -29,12 +29,11 @@ function MovieCard({ movie, onClickMovie, isSavedMovies }) {
             trailerLink: movie.trailerLink,
             thumbnail: thumbnailUrl,
             nameRU: movie.nameRU,
-            nameEN: movie.nameEN, 
+            nameEN: movie.nameEN,
         };
 
     function handleClick() {
-        console.log(`буду что-то делать с фильмом ${!isLiked}`);;
-        setIsLiked(!isLiked);     
+        setIsLiked(!isLiked);
         onClickMovie(movieData, !isLiked);
     }
 

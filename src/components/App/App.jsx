@@ -222,10 +222,8 @@ function App() {
   }
 
   function handleGetMovies(options) {
-    console.log('будем искать');
     if (allMovies.length === 0) {
-      console.log('обращаюсь к большому API');
-      setIsLoading(true);
+         setIsLoading(true);
       moviesApi.getMovies()
         .then((data) => {
           localStorage.setItem('allMovies', JSON.stringify(data));
@@ -246,11 +244,10 @@ function App() {
           console.log(err);
         })
         .finally(() => {
-          setTimeout(() => setIsLoading(false), 2000);
+          setIsLoading(false)
         });
     } else {
-      console.log('обращаюсь к хранилищу');
-      const filteredMovies = filterMovies(allMovies, options)
+          const filteredMovies = filterMovies(allMovies, options)
       setSearchData({
         keyword: options.keyword,
         filter: options.filter,
@@ -276,8 +273,7 @@ function App() {
 
   function handleLikeMovie(movieData, isLiked) {
     if (isLiked) {
-      console.log("сохраняю фильм");
-      mainApi.addMovie(movieData)
+         mainApi.addMovie(movieData)
         .then((movie) => {
           setUserMovies([...userMovies, movie]);
         })
@@ -295,8 +291,6 @@ function App() {
   }
 
   function handleRemoveMovie(movieData) {
-    console.log("удаляю фильм");
-
     mainApi.deleteMovie(movieData)
       .then((movie) => {
         const newUserMovies = userMovies.filter((item) => {
