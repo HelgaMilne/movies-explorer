@@ -66,8 +66,7 @@ function Register({ onRegister, apiMessage, onClearApiMessage }) {
         <label className="form__label">
           E-mail
           <input className={`form__input ${isValid ? "" : 'form__input_error'}`}
-            name='email' type='email' onChange={handleChange} placeholder='email' required
-            pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9\-]+[.]{1}[a-zA-Z]{2,6}$' />
+            name='email' type='email' onChange={handleChange} placeholder='email' required />
           <span className={`form__input-error ${isValid ? "" : 'form__input-error_active'}`}>{errorEmail} </span>
         </label>
 

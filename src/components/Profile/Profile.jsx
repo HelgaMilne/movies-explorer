@@ -73,7 +73,7 @@ function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage, location }
                 <label className="profile__form-label profile__form-label_align_down">
                     <input className="profile__form-input" name="email" type="email"
                         onChange={handleChange} placeholder='email' value={values.email || ''}  
-                        pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9\-]+[.]{1}[a-zA-Z]{2,6}$' required />
+                      required />
                     <span className="profile__form-label-name"> E-mail</span>
                 </label>
                 <span className={`profile__input-error ${isValid ? "" : 'profile__input-error_active'}`}>{errorEmail} </span>

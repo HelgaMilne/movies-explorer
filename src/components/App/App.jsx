@@ -114,6 +114,10 @@ function App() {
     putInLocalStorage(searchData);
   }, [searchData]);
 
+  useEffect(() => {
+    setFilteredUserMovies([]);
+  }, []);
+
   function lookInLocalStorage() {
     if (JSON.parse(localStorage.getItem('filteredMovies'))) {
       return {
@@ -299,6 +303,10 @@ function App() {
           return (item._id !== movie._id);
         })
         setUserMovies(newUserMovies);
+        const newFilteredUserMovies = filteredUserMovies.filter((item) => {
+          return (item._id !== movie._id);
+        })
+        setFilteredUserMovies(newFilteredUserMovies);
       })
       .catch((err) => {
         console.log(err);

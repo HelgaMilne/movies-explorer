@@ -14,13 +14,17 @@ function MoviesCardList({ movies, width, onClickMovie, isSavedMovies }) {
 
     const [delta, setDelta] = useState(getDelta());
     const [movieIndex, setMovieIndex] = useState(getIndex());
-    const firstMovies = movies.slice(0, movieIndex);
-    const [moviesForRender, setMoviesForRender] = useState(firstMovies);
+    const [moviesForRender, setMoviesForRender] = useState([]);
 
     useEffect(() => {
         setDelta(getDelta());
         setMovieIndex(getIndex());
     }, [width]);
+
+    useEffect(() => {
+        const firstMovies = movies.slice(0, movieIndex);
+        setMoviesForRender(firstMovies);
+    }, [movies]);
 
     function handleClick() {
         if (width >= 646) {
@@ -34,25 +38,39 @@ function MoviesCardList({ movies, width, onClickMovie, isSavedMovies }) {
         }
     }
 
-    return (
-        <div className="movies-card-list">
-            <ul className="movies-card-list__container">
+    if (isSavedMovies) {
+        return (
+            <div className="movies-card-list">
+                <ul className="movies-card-list__container">
+                    {
+                        movies.map((movie) => {
+                            return (
+                                <MovieCard movie={movie} key={movie.id || movie._id} onClickMovie={onClickMovie} isSavedMovies={isSavedMovies} />
+                            );
+                        })
+                    }
+                </ul>
+            </div>
+        );
+    } else {
+        return (
+            <div className="movies-card-list">
+                <ul className="movies-card-list__container">
+                    {
+                        moviesForRender.map((movie) => {
+                            return (
+                                <MovieCard movie={movie} key={movie.id || movie._id} onClickMovie={onClickMovie} isSavedMovies={isSavedMovies} />
+                            );
+                        })
+                    }
+                </ul>
                 {
-                    (isSavedMovies === true ? movies : moviesForRender).map((movie) => {
-                        return (
-                            <MovieCard movie={movie} key={movie.id || movie._id} onClickMovie={onClickMovie} isSavedMovies={isSavedMovies} />
-                        );
-                    })
-                }
-            </ul>
-            {
-                isSavedMovies === false && (
                     (movies.length + 1) > (movieIndex + 1) &&
                     <button className="movies-card-list__more-button" onClick={handleClick}>Ещё</button>
-                )
-            }
-        </div>
-    );
+                }
+            </div>
+        );
+    }
 }
 
 export default MoviesCardList;

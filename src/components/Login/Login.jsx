@@ -45,19 +45,21 @@ function Login({ onLogin, apiMessage, onClearApiMessage }) {
             "password": values.password,
         });
     }
-
+console.log(validationState);
+console.log(errorEmail);
+console.log(errorPassword);
     return (
         <section className="login">
             <Form
-                formTitle={formTitle} formName={formName} buttonText={buttonText} 
+                formTitle={formTitle} formName={formName} buttonText={buttonText}
                 formSubmit={handleSubmit} formText={formText}
-                 formLinkText={formLinkText} formLink={formLink} 
-                 isValid={isValid} message={apiMessage}>
+                formLinkText={formLinkText} formLink={formLink}
+                isValid={isValid} message={apiMessage} >
 
                 <label className="form__label">
                     E-mail
                     <input className={`form__input ${isValid ? "" : 'form__input_error'}`} name='email' type='email' onChange={handleChange}
-                        placeholder='email' pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9\-]+[.]{1}[a-zA-Z]{2,6}$' required />
+                        placeholder='email' required />
                     <span className={`form__input-error ${isValid ? "" : 'form__input-error_active'}`}>{errorEmail} </span>
                 </label>
 

@@ -10,7 +10,10 @@ class MainApi {
         } else {
             return (async function () {
                 let result = await response.json();
-                return Promise.reject(result);
+                return Promise.reject({
+                    status: response.status,
+                    message: result,
+                });
             })()
         }
     }

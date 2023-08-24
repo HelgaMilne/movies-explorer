@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import InfoMoviesApi from '../InfoMoviesApi/InfoMoviesApi';
@@ -14,11 +14,16 @@ function SavedMovies({
     onClearApiMessage,
     isLoading }) {
 
-    const movies = filteredMovies.length !== 0 ? filteredMovies : savedMovies;
+    const [moviesForRender, setMoviesForRender] = useState([]);
 
     useEffect(() => {
         onClearApiMessage();
     }, []);
+
+    useEffect(() => {
+        const movies = filteredMovies.length !== 0 ? filteredMovies : savedMovies;
+        setMoviesForRender(movies);
+    }, [savedMovies, filteredMovies]);
 
     return (
         <section className="saved-movies">
@@ -26,7 +31,7 @@ function SavedMovies({
             {
                 isLoading ? <Preloader />
                     : apiMessage ? <InfoMoviesApi message={apiMessage} />
-                        : <MoviesCardList movies={movies} onClickMovie={onClickMovie} isSavedMovies={true} />
+                        : <MoviesCardList movies={moviesForRender} onClickMovie={onClickMovie} isSavedMovies={true} />
             }
         </section>
     );

@@ -57,16 +57,3 @@ function MovieCard({ movie, onClickMovie, isSavedMovies }) {
 }
 
 export default MovieCard;
-
-/*
-    useEffect(() => {
-        if (!isSavedMovies) {
-            console.log(`буду что-то делать с фильмом ${isLiked}`);;
-            onClickMovie(movieData);
-        }
-    }, [isLiked]);
- function handleClick() {
-        onClickMovie(movieData);
-        setIsLiked(!isLiked);
-    }
-    */
