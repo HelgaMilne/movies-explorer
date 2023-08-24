@@ -3,7 +3,7 @@ import { useForm } from '../../hooks/useForm';
 import Form from '../Form/Form';
 import './Login.css';
 
-function Login({ onLogin, apiMessage, onClearApiMessage, location }) {
+function Login({ onLogin, apiMessage, onClearApiMessage }) {
 
     const formTitle = 'Рады видеть!';
     const formName = 'login';
@@ -49,20 +49,22 @@ function Login({ onLogin, apiMessage, onClearApiMessage, location }) {
     return (
         <section className="login">
             <Form
-                formTitle={formTitle} formName={formName} buttonText={buttonText} formSubmit={handleSubmit}
-                formText={formText} formLinkText={formLinkText} formLink={formLink} isValid={isValid} message={apiMessage}>
+                formTitle={formTitle} formName={formName} buttonText={buttonText} 
+                formSubmit={handleSubmit} formText={formText}
+                 formLinkText={formLinkText} formLink={formLink} 
+                 isValid={isValid} message={apiMessage}>
 
                 <label className="form__label">
                     E-mail
                     <input className={`form__input ${isValid ? "" : 'form__input_error'}`} name='email' type='email' onChange={handleChange}
-                        placeholder='email' required />
+                        placeholder='email' pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9\-]+[.]{1}[a-zA-Z]{2,6}$' required />
                     <span className={`form__input-error ${isValid ? "" : 'form__input-error_active'}`}>{errorEmail} </span>
                 </label>
 
                 <label className="form__label">
                     Пароль
                     <input className={`form__input ${isValid ? "" : 'form__input_error'}`} name='password' type='password' onChange={handleChange}
-                        placeholder='паролль' minLength="8" maxLength="40" required />
+                        placeholder='паролль' minLength="8" maxLength="40" pattern="[a-zA-Z0-9]{8,40}" required />
                     <span className={`form__input-error ${isValid ? "" : 'form__input-error_active'}`}>{errorPassword} </span>
                 </label>
 

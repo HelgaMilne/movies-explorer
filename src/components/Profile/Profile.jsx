@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
-import InfoApi from '../InfoApi/InfoApi';
+import InfoAuthApi from '../InfoAuthApi/InfoAuthApi';
 import { useForm } from '../../hooks/useForm';
 import './Profile.css';
 
@@ -28,7 +28,6 @@ function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage, location }
     useEffect(() => {
         setValues({ name: currentUser.name, email: currentUser.email });
     }, [currentUser]);
-
 
     useEffect(() => {
         if (values.name && values.email) {
@@ -61,24 +60,25 @@ function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage, location }
         <section className='profile'>
             <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
 
-            <form className="profile__form" name="profile" onSubmit={handleSubmit}>
+            <form className="profile__form" name="profile" onSubmit={handleSubmit} noValidate>
 
                 <span className={`profile__input-error ${isValid ? "" : 'profile__input-error_active'}`}>{errorName} </span>
                 <label className="profile__form-label" >
                     <input className={`profile__form-input ${isValid ? "" : 'profile__form-input_error'}`} name="name" type="text"
-                        onChange={handleChange} placeholder='имя' value={values.name || ''} pattern="[A-Za-zА-Яа-яЁё\s\-]+" minLength="2"
-                        maxLength="40" required />
+                        onChange={handleChange} placeholder='имя' value={values.name || ''} minLength="2"
+                        maxLength="30" pattern="[A-Za-zА-Яа-яЁё\s\-]+" required />
                     <span className="profile__form-label-name" >Имя</span>
                 </label>
 
                 <label className="profile__form-label profile__form-label_align_down">
                     <input className="profile__form-input" name="email" type="email"
-                        onChange={handleChange} placeholder='email' value={values.email || ''} required />
+                        onChange={handleChange} placeholder='email' value={values.email || ''}  
+                        pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9\-]+[.]{1}[a-zA-Z]{2,6}$' required />
                     <span className="profile__form-label-name"> E-mail</span>
                 </label>
                 <span className={`profile__input-error ${isValid ? "" : 'profile__input-error_active'}`}>{errorEmail} </span>
 
-                <InfoApi message={apiMessage} />
+                <InfoAuthApi message={apiMessage} />
 
                 <button className="profile__form-submit-button" type="submit" disabled={!isValid || !isChangeData}  >Редактировать</button>
 

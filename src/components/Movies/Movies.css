@@ -10,28 +10,6 @@
     box-sizing: border-box;
 }
 
-.movies__message {
-    display: flex;
-    width: 70%;
-    height: 180px;
-    margin: 0;
-    padding: 0;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    font-family: inherit;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    color: var(--color-black);
-    text-align: center;
-}
-
-.movies__message_hidden {
-    display: none;
-}
-
 @media screen and (max-width: 1040px) {
     .movies {
         padding-left: 50px;

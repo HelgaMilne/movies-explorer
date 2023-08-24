@@ -5,17 +5,22 @@ export function useForm(inputValues = {}) {
     const [errorMessages, setErrorMessages] = useState({});
     const [validationState, setValidationState] = useState({});
     const errorMessageForName = 'Допускаются только латиница, кириллица, пробел или дефис.'
-    const errorMessageForPassword = "8 или более символов, в том числе по меньшей мере, одну цифру,  одну прописную, одну строчную буквы"
+    const errorMessageForPassword = "от 8 до 40 символов, в том числе по меньшей мере, одну цифру,  одну прописную, одну строчную буквы"
+    const errorMessageForEmail = `Пожалуйста, введите адрес электронной почты в формате "username@mailname.domen"`;
 
-    function returnErrorText(item) {
-        if (item === 'name') {
+    function returnErrorText(name) {
+        if (name === 'name') {
             return errorMessageForName;
-        } else if (item === 'password') {
+        } else if (name === 'password') {
             return errorMessageForPassword;
+        } else if (name === 'email') {
+            return errorMessageForEmail;
         }
     }
 
     const handleChange = (event) => {
+        console.log(event.target.validity);
+        console.log(event.target.validationMessage);
         if (event.target.validity.patternMismatch) {
             setErrorMessages({ ...errorMessages, [event.target.name]: returnErrorText(event.target.name) });
         } else if (!event.target.validity.valid) {

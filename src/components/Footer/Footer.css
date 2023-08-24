@@ -13,7 +13,7 @@
     font-size: 13px;
     line-height: 16px;
     box-sizing: border-box;
-    align-self: flex-end;
+    flex: 0 0 auto;
 }
 
 .footer__title {

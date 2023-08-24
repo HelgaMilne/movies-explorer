@@ -3,7 +3,7 @@ import { useForm } from '../../hooks/useForm';
 import Form from '../Form/Form';
 import './Register.css';
 
-function Register({ onRegister, apiMessage, onClearApiMessage, location }) {
+function Register({ onRegister, apiMessage, onClearApiMessage }) {
 
   const formTitle = 'Добро пожаловать!';
   const formName = 'register';
@@ -58,7 +58,7 @@ function Register({ onRegister, apiMessage, onClearApiMessage, location }) {
           Имя
           <input className={`form__input ${isValid ? "" : 'form__input_error'}`}
             name='name' type='text' onChange={handleChange}
-            minLength="2" maxLength="40" pattern="[A-Za-zА-Яа-яЁё\s\-]+"
+            minLength="2" maxLength="30" pattern="[A-Za-zА-Яа-яЁё\s\-]+"
             placeholder='имя' required />
           <span className={`form__input-error ${isValid ? "" : 'form__input-error_active'}`}>{errorName} </span>
         </label>
@@ -66,7 +66,8 @@ function Register({ onRegister, apiMessage, onClearApiMessage, location }) {
         <label className="form__label">
           E-mail
           <input className={`form__input ${isValid ? "" : 'form__input_error'}`}
-            name='email' type='email' onChange={handleChange} placeholder='email' required />
+            name='email' type='email' onChange={handleChange} placeholder='email' required
+            pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9\-]+[.]{1}[a-zA-Z]{2,6}$' />
           <span className={`form__input-error ${isValid ? "" : 'form__input-error_active'}`}>{errorEmail} </span>
         </label>
 
@@ -74,7 +75,7 @@ function Register({ onRegister, apiMessage, onClearApiMessage, location }) {
           Пароль
           <input className={`form__input ${isValid ? "" : 'form__input_error'}`}
             name='password' type='password' onChange={handleChange} placeholder='паролль'
-            minLength="8" maxLength="40" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,40}" required />
+            minLength="8" maxLength="40" pattern="[a-zA-Z0-9]{8,40}" required />
           <span className={`form__input-error ${isValid ? "" : 'form__input-error_active'}`}>{errorPassword} </span>
         </label>
 

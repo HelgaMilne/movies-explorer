@@ -1,13 +1,21 @@
+import { useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
-import InfoApi from '../InfoApi/InfoApi';
+import InfoMoviesApi from '../InfoMoviesApi/InfoMoviesApi';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './Movies.css';
 
-function Movies({ movies, savedMovies, keyword, filter, width, onGetMovies, onClickMovie }) {
-
-    const onloaded = true;
-    const message = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.';
+function Movies({
+    movies,
+    savedMovies,
+    keyword,
+    filter,
+    width,
+    onGetMovies,
+    onClickMovie,
+    apiMessage,
+    onClearApiMessage,
+    isLoading }) {
 
     const handingMovies = movies.map((item01) => {
         if (savedMovies.length !== 0) {
@@ -20,18 +28,25 @@ function Movies({ movies, savedMovies, keyword, filter, width, onGetMovies, onCl
         return item01;
     });
 
+    useEffect(() => {
+        onClearApiMessage();
+    }, []);
+
     return (
         <section className="movies">
-            <SearchForm keyword={keyword} filter={filter} onGetMovies={onGetMovies}  isSavedMovies={false} />
-            <Preloader onloaded={onloaded} />              
-            <span className="movies__message movies__message_hidden">{message}</span>
-            <MoviesCardList movies={handingMovies} width={width} onClickMovie={onClickMovie} isSavedMovies={false} />
+            <SearchForm
+                keyword={keyword}
+                filter={filter}
+                onGetMovies={onGetMovies}
+                isSavedMovies={false}
+            />
+            {
+                isLoading ? <Preloader />
+                    : apiMessage ? <InfoMoviesApi message={apiMessage} />
+                        : <MoviesCardList movies={handingMovies} width={width} onClickMovie={onClickMovie} isSavedMovies={false} />
+            }
         </section>
     );
 }
 
 export default Movies;
-
-/*
-
-*/
