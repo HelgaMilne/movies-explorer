@@ -4,7 +4,7 @@ import InfoAuthApi from '../InfoAuthApi/InfoAuthApi';
 import { useForm } from '../../hooks/useForm';
 import './Profile.css';
 
-function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage }) {
+function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage, isDone }) {
 
     const currentUser = useContext(CurrentUserContext);
 
@@ -18,6 +18,7 @@ function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage }) {
 
     const [isValid, setIsValid] = useState(false);
     const [isChangeData, setIsChangeData] = useState(false);
+    const [block, setBlock] = useState(false);
     const errorName = errorMessages['name'];
     const errorEmail = errorMessages['email'];
 
@@ -30,19 +31,19 @@ function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage }) {
     }, [currentUser]);
 
     useEffect(() => {
-        if (values.name && values.email) {
-            const state = Object.values(validationState).some((item) => {
-                return item === false;
-            });
-            setIsValid(!state);
-        }
+        const state = Object.values(validationState).some((item) => {
+            return item === false;
+        });
+        setIsValid(!state);
     }, [validationState, values]);
 
     useEffect(() => {
-        if ((values.name && values.name !== currentUser.name) || (values.email && values.email !== currentUser.email)) {
-            setIsChangeData(true);
-        }
+        setIsChangeData(values.name !== currentUser.name || values.email !== currentUser.email);
     }, [values]);
+
+    useEffect(() => {
+        setBlock(false);
+    }, [isDone]);
 
     function handleClick() {
         onLogout();
@@ -50,6 +51,7 @@ function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage }) {
 
     function handleSubmit(event) {
         event.preventDefault();
+        setBlock(true);
         onUpdate({
             "name": values.name,
             "email": values.email,
@@ -65,21 +67,21 @@ function Profile({ onUpdate, onLogout, apiMessage, onClearApiMessage }) {
                 <span className={`profile__input-error ${isValid ? "" : 'profile__input-error_active'}`}>{errorName} </span>
                 <label className="profile__form-label" >
                     <input className={`profile__form-input ${isValid ? "" : 'profile__form-input_error'}`} name="name" type="text"
-                        onChange={handleChange} placeholder='имя' value={values.name || ''} minLength="2"
+                        onChange={handleChange} placeholder='имя' value={values.name || ''} disabled={block} minLength="2"
                         maxLength="30" pattern="[A-Za-zА-Яа-яЁё\s\-]+" required />
                     <span className="profile__form-label-name" >Имя</span>
                 </label>
 
                 <label className="profile__form-label profile__form-label_align_down">
                     <input className="profile__form-input" name="email" type="email"
-                        onChange={handleChange} placeholder='email' value={values.email || ''} required />
+                        onChange={handleChange} placeholder='email' value={values.email || ''} disabled={block} required />
                     <span className="profile__form-label-name"> E-mail</span>
                 </label>
                 <span className={`profile__input-error ${isValid ? "" : 'profile__input-error_active'}`}>{errorEmail} </span>
 
                 <InfoAuthApi message={apiMessage} />
 
-                <button className="profile__form-submit-button" type="submit" disabled={!isValid || !isChangeData}  >Редактировать</button>
+                <button className="profile__form-submit-button" type="submit" disabled={block || !isValid || !isChangeData}  >Редактировать</button>
 
             </form>
 

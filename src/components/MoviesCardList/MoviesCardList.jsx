@@ -1,22 +1,41 @@
 import { useState, useEffect } from 'react';
 import MovieCard from '../MovieCard/MovieCard';
 import './MoviesCardList.css';
+import {
+    BREAKPOINT_01,
+    BREAKPOINT_02,
+    NUMBER_OF_MOVIES_MOBILE_SCREEN,
+    NUMBER_OF_MOVIES_TABLET_SCREEN,
+    NUMBER_OF_MOVIES_DESKTOP_SCREEN,
+    DELTA_TABLET_MOBILE_SCREEN,
+    DELTA_DESKTOP_SCREEN,
+} from '../../utils/config.js';
 
 function MoviesCardList({ movies, width, onClickMovie, isSavedMovies }) {
 
     function getDelta() {
-        return width >= 880 ? 3 : width <= 879 && width >= 604 ? 2 : 1;
+        if (width >= BREAKPOINT_01) {
+            return DELTA_DESKTOP_SCREEN;
+        } else if (width < BREAKPOINT_01) {
+            return DELTA_TABLET_MOBILE_SCREEN;
+        }
     }
 
     function getIndex() {
-        return (delta === 3 || delta === 2) ? delta * 4 : delta * 5;
+        if (width >= BREAKPOINT_01) {
+            return NUMBER_OF_MOVIES_DESKTOP_SCREEN;
+        } else if (width < BREAKPOINT_01 && width >= BREAKPOINT_02) {
+            return NUMBER_OF_MOVIES_TABLET_SCREEN;
+        } else {
+            return NUMBER_OF_MOVIES_MOBILE_SCREEN;
+        }
     }
 
     const [delta, setDelta] = useState(getDelta());
     const [movieIndex, setMovieIndex] = useState(getIndex());
     const [moviesForRender, setMoviesForRender] = useState([]);
 
-    useEffect(() => {
+    useEffect(() => {       
         setDelta(getDelta());
         setMovieIndex(getIndex());
     }, [width]);
@@ -24,18 +43,12 @@ function MoviesCardList({ movies, width, onClickMovie, isSavedMovies }) {
     useEffect(() => {
         const firstMovies = movies.slice(0, movieIndex);
         setMoviesForRender(firstMovies);
-    }, [movies]);
+    }, [movies, delta, movieIndex]);
 
     function handleClick() {
-        if (width >= 646) {
-            const nextMovies = movies.slice(movieIndex, (movieIndex + delta));
-            setMoviesForRender([...moviesForRender, ...nextMovies]);
-            setMovieIndex(movieIndex + delta);
-        } else {
-            const nextMovies = movies.slice(movieIndex, (movieIndex + delta + 1));
-            setMoviesForRender([...moviesForRender, ...nextMovies]);
-            setMovieIndex(movieIndex + delta + 1);
-        }
+        const nextMovies = movies.slice(movieIndex, (movieIndex + delta));
+        setMoviesForRender([...moviesForRender, ...nextMovies]);
+        setMovieIndex(movieIndex + delta);
     }
 
     if (isSavedMovies) {

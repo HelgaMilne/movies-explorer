@@ -3,7 +3,7 @@ import { useForm } from '../../hooks/useForm';
 import Form from '../Form/Form';
 import './Register.css';
 
-function Register({ onRegister, apiMessage, onClearApiMessage }) {
+function Register({ onRegister, apiMessage, onClearApiMessage, isDone }) {
 
   const formTitle = 'Добро пожаловать!';
   const formName = 'register';
@@ -52,7 +52,8 @@ function Register({ onRegister, apiMessage, onClearApiMessage }) {
     <section className="register">
       <Form
         formTitle={formTitle} formName={formName} buttonText={buttonText} formSubmit={handleSubmit}
-        formText={formText} formLinkText={formLinkText} formLink={formLink} isValid={isValid} message={apiMessage}>
+        formText={formText} formLinkText={formLinkText} formLink={formLink}
+        isValid={isValid} message={apiMessage} isDone={isDone}>
 
         <label className="form__label">
           Имя

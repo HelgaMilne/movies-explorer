@@ -1,3 +1,5 @@
+import { SHORT_DURATION } from './config.js';
+
 function filterMovies(movies, options) {
     const regex = new RegExp(options.keyword, 'i');
     let filteredMovies = [];
@@ -10,7 +12,7 @@ function filterMovies(movies, options) {
 
     filteredMovies = movies.filter((movie) => {
         if (options.filter) {
-            return (search(movie) && movie.duration <= 40);
+            return (search(movie) && movie.duration <= SHORT_DURATION);
         } else {
             return search(movie);
         }

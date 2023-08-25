@@ -3,7 +3,7 @@ import { useForm } from '../../hooks/useForm';
 import Form from '../Form/Form';
 import './Login.css';
 
-function Login({ onLogin, apiMessage, onClearApiMessage }) {
+function Login({ onLogin, apiMessage, onClearApiMessage, isDone }) {
 
     const formTitle = 'Рады видеть!';
     const formName = 'login';
@@ -52,7 +52,7 @@ function Login({ onLogin, apiMessage, onClearApiMessage }) {
                 formTitle={formTitle} formName={formName} buttonText={buttonText}
                 formSubmit={handleSubmit} formText={formText}
                 formLinkText={formLinkText} formLink={formLink}
-                isValid={isValid} message={apiMessage} >
+                isValid={isValid} message={apiMessage} isDone={isDone} >
 
                 <label className="form__label">
                     E-mail

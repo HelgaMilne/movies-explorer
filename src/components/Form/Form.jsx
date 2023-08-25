@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import InfoAuthApi from '../InfoAuthApi/InfoAuthApi';
@@ -13,9 +14,18 @@ function Form({
     formSubmit,
     isValid,
     message,
-    children }) {
+    children,
+    isDone }) {
+
+    const [block, setBlock] = useState(false);
+
+    useEffect(() => {
+        setBlock(false);
+    }, [isDone]);
 
     function handleSubmit(event) {
+        event.preventDefault();
+        setBlock(true);
         formSubmit(event);
     }
 
@@ -28,7 +38,7 @@ function Form({
                     {children}
                 </div>
                 <InfoAuthApi message={message} />
-                <button className={`form__submit-button ${isValid ? "" : "form__submit-button_inactive"}`} type="submit" disabled={!isValid} >{buttonText}</button>
+                <button className={`form__submit-button ${isValid ? "" : "form__submit-button_inactive"}`} type="submit" disabled={block || !isValid} >{buttonText}</button>
             </form>
             <span className="form-section__text">{formText}&nbsp;<Link to={formLink} className="form-section__link" >{formLinkText}</Link></span>
         </section>

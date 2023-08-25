@@ -24,8 +24,9 @@ function App() {
   const [isHamburgerMenuPopupOpen, setIsHamburgerMenuPopupOpen] = useState(false);
   const [width, setWidth] = useState(document.documentElement.clientWidth);
   const [currentUser, setCurrentUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(checkLoggeIn());
   const [isLoading, setIsLoading] = useState(false);
+  const [isDone, setIsDone] = useState(false);
   const [registerApiMessage, setRegisterApiMessage] = useState('');
   const [loginApiMessage, setLoginApiMessage] = useState('');
   const [profileApiMessage, setProfileApiMessage] = useState('');
@@ -34,7 +35,7 @@ function App() {
   const [searchData, setSearchData] = useState(lookInLocalStorage());
   const [userMovies, setUserMovies] = useState([]);
   const [filteredUserMovies, setFilteredUserMovies] = useState([]);
-  const allMovies = JSON.parse(localStorage.getItem('allMovies')) || [];
+  const [allMovies, setAllMovies] = useState(JSON.parse(localStorage.getItem('allMovies')) || []);
 
   const headerMenuItems = [
     { name: 'Фильмы', url: '/movies' },
@@ -76,7 +77,7 @@ function App() {
       let timeoutId;
       return function () {
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(handleResize, 2000);
+        timeoutId = setTimeout(handleResize, 1000);
       }
     }
     window.addEventListener('resize', wait());
@@ -88,7 +89,7 @@ function App() {
     mainApi.checkToken()
       .then((userData) => {
         setCurrentUser(userData);
-        setLoggedIn(true);
+        localStorage.setItem('loggedIn', 'true');
         if (!(path === '/signin' || path === '/signup')) {
           navigate(path, { replace: true });
         }
@@ -100,14 +101,16 @@ function App() {
   }, [loggedIn]);
 
   useEffect(function () {
-    mainApi.getMovies()
-      .then((movies) => {
-        setUserMovies(movies);
-      })
-      .catch((err) => {
-        setUserMoviesApiMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.');
-        console.log(err);
-      });
+    if (loggedIn) {
+      mainApi.getMovies()
+        .then((movies) => {
+          setUserMovies(movies);
+        })
+        .catch((err) => {
+          setUserMoviesApiMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.');
+          console.log(err);
+        });
+    }
   }, [loggedIn]);
 
   useEffect(() => {
@@ -117,6 +120,11 @@ function App() {
   useEffect(() => {
     setFilteredUserMovies([]);
   }, []);
+
+  function checkLoggeIn() {
+    const str = localStorage.getItem('loggedIn');
+    return str === 'true' ? true : false;
+  }
 
   function lookInLocalStorage() {
     if (JSON.parse(localStorage.getItem('filteredMovies'))) {
@@ -145,6 +153,7 @@ function App() {
     localStorage.removeItem('filter');
     localStorage.removeItem('filteredMovies');
     localStorage.removeItem('allMovies');
+    localStorage.removeItem('loggedIn');
   }
 
   function handleRegister(userData) {
@@ -164,6 +173,9 @@ function App() {
         }
         console.log(err);
       })
+      .finally(() => {
+        setIsDone(!isDone);
+      })
   }
 
   function handleLogin(userData) {
@@ -180,6 +192,9 @@ function App() {
           setLoginApiMessage('При авторизации произошла ошибка. Переданный токен некорректен.');
         }
         console.log(err);
+      })
+      .finally(() => {
+        setIsDone(!isDone);
       })
   }
 
@@ -199,6 +214,9 @@ function App() {
         }
         console.log(err);
       })
+      .finally(() => {
+        setIsDone(!isDone);
+      })
   }
 
   function handleLogout() {
@@ -207,6 +225,7 @@ function App() {
         setLoggedIn(false);
         setCurrentUser({});
         setUserMovies([]);
+        setFilteredUserMovies([]);
         setSearchData({
           keyword: '',
           filter: false,
@@ -223,9 +242,10 @@ function App() {
 
   function handleGetMovies(options) {
     if (allMovies.length === 0) {
-         setIsLoading(true);
+      setIsLoading(true);
       moviesApi.getMovies()
         .then((data) => {
+          setAllMovies(data);
           localStorage.setItem('allMovies', JSON.stringify(data));
           const filteredMovies = filterMovies(data, options)
           setSearchData({
@@ -247,7 +267,7 @@ function App() {
           setIsLoading(false)
         });
     } else {
-          const filteredMovies = filterMovies(allMovies, options)
+      const filteredMovies = filterMovies(allMovies, options)
       setSearchData({
         keyword: options.keyword,
         filter: options.filter,
@@ -273,7 +293,7 @@ function App() {
 
   function handleLikeMovie(movieData, isLiked) {
     if (isLiked) {
-         mainApi.addMovie(movieData)
+      mainApi.addMovie(movieData)
         .then((movie) => {
           setUserMovies([...userMovies, movie]);
         })
@@ -360,22 +380,28 @@ function App() {
             onLogout={handleLogout}
             onClearApiMessage={handleClearApiMessage}
             apiMessage={profileApiMessage}
-            location={location}
+            isDone={isDone}
             loggedIn={loggedIn}
           />} />
           <Route path="/" element={<Main />} />
-          <Route path="/signin" element={<Login
-            onLogin={handleLogin}
-            apiMessage={loginApiMessage}
-            onClearApiMessage={handleClearApiMessage}
-            location={location}
-          />} />
-          <Route path="/signup" element={<Register
-            onRegister={handleRegister}
-            apiMessage={registerApiMessage}
-            onClearApiMessage={handleClearApiMessage}
-            location={location}
-          />} />
+          {
+            !loggedIn && (
+              <>
+                <Route path="/signin" element={<Login
+                  onLogin={handleLogin}
+                  apiMessage={loginApiMessage}
+                  onClearApiMessage={handleClearApiMessage}
+                  isDone={isDone}
+                />} />
+                <Route path="/signup" element={<Register
+                  onRegister={handleRegister}
+                  apiMessage={registerApiMessage}
+                  onClearApiMessage={handleClearApiMessage}
+                  isDone={isDone}
+                />} />
+              </>
+            )
+          }
           <Route path='/404' element={<NotFoundPage />} />
           <Route path="*" element={<Navigate to='/404' replace />} />
         </Routes>
