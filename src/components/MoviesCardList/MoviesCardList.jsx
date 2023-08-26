@@ -35,10 +35,15 @@ function MoviesCardList({ movies, width, onClickMovie, isSavedMovies }) {
     const [movieIndex, setMovieIndex] = useState(getIndex());
     const [moviesForRender, setMoviesForRender] = useState([]);
 
-    useEffect(() => {       
+    useEffect(() => {
         setDelta(getDelta());
         setMovieIndex(getIndex());
     }, [width]);
+
+    useEffect(() => {
+        setDelta(getDelta());
+        setMovieIndex(getIndex());
+    }, [movies]);
 
     useEffect(() => {
         const firstMovies = movies.slice(0, movieIndex);

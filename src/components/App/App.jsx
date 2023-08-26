@@ -159,9 +159,10 @@ function App() {
   function handleRegister(userData) {
     mainApi.register(userData)
       .then((user) => {
-        setLoggedIn(true);
-        setCurrentUser(user);
-        navigate('/movies', { replace: true, })
+        handleLogin({
+          "email": user.email,
+          "password": userData.password,
+        });
       })
       .catch((err) => {
         if (err.status === 400) {
