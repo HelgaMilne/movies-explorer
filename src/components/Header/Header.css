@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
+    flex: 0 0 auto;
 }
 
 .header_theme_promo {

@@ -1,8 +1,9 @@
 import './Preloader.css'
 
-const Preloader = ({ onloaded }) => {
+const Preloader = () => {
+
     return (
-        <div className={`preloader ${onloaded ? 'preloader_hidden' : ''}`}>
+        <div className="preloader">
             <div className="preloader__container">
                 <span className="preloader__round"></span>
             </div>

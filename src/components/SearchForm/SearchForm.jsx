@@ -1,23 +1,63 @@
+import { useState, useEffect } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm() {
+function SearchForm({ keyword = '', filter = false, onGetMovies, isSavedMovies }) {
 
-    const errorText = 'Нужно ввести ключевое слово';
+    const [isValid, setIsValid] = useState(false);
+    const [isCheckBoxActive, setIsCheckBoxActive] = useState(filter);
+    const [value, setValue] = useState(keyword);
+    const [errorMessage, setErrorMessage] = useState('');
 
-    function onSubmit() {
-        console.log('test');
+    useEffect(() => {
+        if (isSavedMovies) {
+            onGetMovies({
+                keyword: value,
+                filter: isCheckBoxActive,
+            });
+        } else {
+            if (value) {
+                onGetMovies({
+                    keyword: value,
+                    filter: isCheckBoxActive,
+                });
+            }
+        }
+    }, [isCheckBoxActive]);
+
+    function handleChange(event) {
+        if (event.target.validity.patternMismatch) {
+            setErrorMessage('Допускаются только латиница или кириллица');
+        } else if (!event.target.validity.valid) {
+            setErrorMessage('Нужно ввести ключевое слово');
+        } else {
+            setErrorMessage('');
+        }
+        setValue(event.target.value);
+        setIsValid(event.target.validity.valid);
+    }
+
+    function changeFilterState(state) {
+        setIsCheckBoxActive(state);
+    }
+
+    function onSubmit(event) {
+        event.preventDefault();
+        onGetMovies({
+            keyword: value,
+            filter: isCheckBoxActive,
+        });
     }
 
     return (
-        <form className="search-form" name="search-form" onSubmit={onSubmit}>
+        <form className="search-form" name="search-form" onSubmit={onSubmit} noValidate>
             <span className="search-form__container">
-                <input className="search-form__input" name="film" placeholder='Фильм' minLength="2"
-                    maxLength="200" required></input>
-                <button className="search-form__button" type="submit" ></button>
+                <input className="search-form__input" name="keyword" type="text" pattern="[A-Za-zА-Яа-яЁё0-9\s]+" value={value} placeholder='Фильм' onChange={handleChange}
+                    maxLength="40" required></input>
+                <button className="search-form__button" type="submit" disabled={!isValid} ></button>
             </span>
-            <span className="search-form__input-error search-form__input-error_active">{errorText} </span>
-            <FilterCheckbox />
+            <span className={`search-form__input-error ${isValid ? '' : 'search-form__input-error_active'} `}>{errorMessage} </span>
+            <FilterCheckbox changeFilterState={changeFilterState} startFilterState={filter} />
         </form>
     );
 }

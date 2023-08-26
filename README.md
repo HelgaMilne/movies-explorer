@@ -25,8 +25,8 @@
 * сборка webpack
 * React
 -----
-#### Ссылка на репозиторий проекта
-https://github.com/OlgaMilne/movies-explorer-frontend.git
+#### Ссылка на pull request Level 3
+https://github.com/OlgaMilne/movies-explorer-frontend/pull/19
 
 #### Ссылка на макет
 https://disk.yandex.ru/d/aZdOkzaVbhGFYw

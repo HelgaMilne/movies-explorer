@@ -1,35 +1,13 @@
 .movies {
     display: flex;
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0 auto;
     padding: 70px;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     box-sizing: border-box;
-}
-
-.movies__message {
-    display: flex;
-    width: 70%;
-    height: 180px;
-    margin: 0;
-    padding: 0;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    font-family: inherit;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    color: var(--color-black);
-    text-align: center;
-}
-
-.movies__message_hidden {
-    display: none;
 }
 
 @media screen and (max-width: 1040px) {

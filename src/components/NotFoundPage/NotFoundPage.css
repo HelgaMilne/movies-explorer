@@ -32,7 +32,7 @@
     text-align: center;
 }
 
-.not-found-page__link {
+.not-found-page__back-link {
     font-family: inherit;
     font-style: normal;
     font-weight: 500;
@@ -43,16 +43,20 @@
     padding: 184px 0 20px;
     text-align: center;
     text-decoration: none;
+    background-color: var(--color-white);
+    border: none;
+    appearance: none;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
-.not-found-page__link:hover {
+.not-found-page__back-link:hover {
     opacity: .7;
     transition: opacity .6s;
 }
 
 @media screen and (max-width: 768px) {
-    .not-found-page__link {
+    .not-found-page__back-link {
         padding-bottom: 182px;
     }
 }
@@ -64,7 +68,7 @@
         margin-bottom: 10px;
     }
 
-    .not-found-page__link {
+    .not-found-page__back-link {
         padding-bottom: 182px;
     }
 }
@@ -74,7 +78,7 @@
         padding: 30px 30px 10px;
     }
 
-    .not-found-page__link {
+    .not-found-page__back-link {
         padding-top: 284px;
         padding-bottom: 20px;
     }
@@ -89,7 +93,7 @@
         line-height: 14px;
     }
 
-    .not-found-page__link {
+    .not-found-page__back-link {
         font-size: 12px;
         line-height: 14px;
     }

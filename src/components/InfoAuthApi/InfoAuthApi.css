@@ -1,0 +1,19 @@
+.info-auth-api {
+    display: flex;
+    width: 100%;
+    min-height: 42px;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--color-accent);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    box-sizing: border-box;
+    flex-grow: 1;
+}

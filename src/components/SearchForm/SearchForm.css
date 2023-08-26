@@ -91,7 +91,15 @@
     transition: opacity .6s;
 }
 
+.search-form__button_inactive,
+.search-form__button:disabled {
+    opacity: .4;
+    pointer-events: none;
+}
+
 .search-form__input-error {
+    display: block;
+    min-height: 20px;
     font-family: inherit;
     font-style: normal;
     font-weight: 400;

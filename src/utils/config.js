@@ -1,0 +1,8 @@
+export const SHORT_DURATION = 40;
+export const BREAKPOINT_01 = 920;
+export const BREAKPOINT_02 = 604;
+export const NUMBER_OF_MOVIES_MOBILE_SCREEN = 5;
+export const NUMBER_OF_MOVIES_TABLET_SCREEN = 8;
+export const NUMBER_OF_MOVIES_DESKTOP_SCREEN = 12;
+export const DELTA_TABLET_MOBILE_SCREEN = 2;
+export const DELTA_DESKTOP_SCREEN = 3;
