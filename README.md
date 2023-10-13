@@ -31,8 +31,6 @@ https://disk.yandex.ru/d/aZdOkzaVbhGFYw
 
 #### Ссылка на проект
 
-IP  130.193.52.154
-
 Frontend https://cinema.nomoredomains.xyz
 
 Backend https://api.cinema.nomoredomains.xyz
