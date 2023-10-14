@@ -43,7 +43,7 @@
 * Webpack
 
 ###  Статус проекта:
-<img src="https://github.com/HelgaMilne/HelgaMilne/blob/main/src/images/passed_code_review_01.svg" alt="badge" width="200px">
+<img src="https://github.com/HelgaMilne/HelgaMilne/blob/main/src/images/passed_code_review_02.svg" alt="badge" width="200px">
 
 -----
 
