@@ -39,6 +39,6 @@ https://github.com/HelgaMilne/movies-explorer-api
 
 #### Ссылка на проект
 
-Frontend  [go](https://cinema.nomoredomains.xyz){:target="_blank" rel="noopener"}
+Frontend https://cinema.nomoredomains.xyz
 
-Backend  [go](https://api.cinema.nomoredomains.xyz){:target="_blank" rel="noopener"}
+Backend https://api.cinema.nomoredomains.xyz
