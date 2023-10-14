@@ -56,3 +56,11 @@ Frontend https://cinema.nomoredomains.xyz
 
 Backend https://api.cinema.nomoredomains.xyz
 
+-----
+
+#### Планы по доработке проекта:
+
+* заменить преждний сторонний API на API КиноПоиска,
+* сообщения с сервера  оформить всплывающим модальным окном
+
+
