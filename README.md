@@ -12,11 +12,12 @@
 
 ###  Установка и запуск приложения на локальном устройстве:
 
-* git clone https://github.com/HelgaMilne/movies-explorer.git - клонировать  фронтенд репозиторий,
-* git clone https://github.com/HelgaMilne/movies-explorer-api - клонировать  бэкенд репозиторий,
-* npm install - установить зависимости в папке frontend и в папке backend,
-* npm run dev - запустить приложение в режиме разработчика в папке backend, используя  порт 3000,
-* npm run start - запустить приложение в режиме разработчика в папке frontend, , используя  порт 3001 (или любой другой, отличный от 3000)
+* **git clone** https://github.com/HelgaMilne/movies-explorer.git - клонировать  фронтенд репозиторий,
+* **git clone** https://github.com/HelgaMilne/movies-explorer-api - клонировать  бэкенд репозиторий,
+* **npm install** - установить зависимости в папке frontend и в папке backend,
+* **npm run dev** - запустить приложение в режиме разработчика в папке backend, используя  порт 3000,
+* **npm run start** - запустить приложение в режиме разработчика в папке frontend, используя порт 3001 (или любой другой, отличный от 3000),
+* сайт откроется на http://localhost:3001/
 
 ###  Реализованы возможности:
 
