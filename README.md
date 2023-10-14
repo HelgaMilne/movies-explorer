@@ -46,6 +46,3 @@ Frontend https://cinema.nomoredomains.xyz
 
 Backend https://api.cinema.nomoredomains.xyz
 
-#### Ссылка на сторонний API (база фильмов)
-
-https://api.nomoreparties.co/beatfilm-movies
