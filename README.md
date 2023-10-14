@@ -32,7 +32,7 @@
 * HTML5, CSS3, JavaScript,
 * React
 * Figma
-* Wwebpack
+* Webpack
 
 -----
 
