@@ -34,7 +34,7 @@
 #### Ссылка на макет
 https://disk.yandex.ru/d/aZdOkzaVbhGFYw
 
-#### Ссылка на репозиторий бэкенд часть проекта
+#### Ссылка на репозиторий бэкенд части проекта
 https://github.com/HelgaMilne/movies-explorer-api
 
 #### Ссылка на проект
