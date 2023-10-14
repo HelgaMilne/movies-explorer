@@ -43,7 +43,7 @@
 * Webpack
 
 ###  Статус проекта:
-<img alt="Static Badge" src="https://img.shields.io/badge/passed%20code%20review-53aaa7"  style="width: 130px; height: 40px;">
+<img alt="Static Badge" src="https://img.shields.io/badge/passed%20code%20review-53aaa7"  style="width: 150px; height: 40px;">
 
 -----
 
