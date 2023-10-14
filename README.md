@@ -43,7 +43,7 @@
 * Webpack
 
 ###  Статус проекта:
- ![passed-code-review](https://img.shields.io/badge/passed-code-review-green)
+<img alt="Static Badge" src="https://img.shields.io/badge/passed%20code%20review-green">
 -----
 
 #### Ссылка на макет
