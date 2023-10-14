@@ -60,7 +60,7 @@ Backend https://api.cinema.nomoredomains.xyz
 
 #### Планы по доработке проекта:
 
-* заменить преждний сторонний API на API КиноПоиска,
+* заменить преждний сторонний API на API КиноПоиска, ![status](https://img.shields.io/badge/status-backlog25-yellowgreen)
 * сообщения от сервера  оформить всплывающим модальным окном
 
 
