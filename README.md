@@ -43,7 +43,7 @@
 * Webpack
 
 ###  Статус проекта:
-прошел код-ревью
+ ![passed-code-review](https://img.shields.io/badge/passed-code-review-green)
 -----
 
 #### Ссылка на макет
